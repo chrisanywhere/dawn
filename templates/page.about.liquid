@@ -1,0 +1,56 @@
+{% assign gplus_jim = "108571052444066857899" %}
+{% assign gplus_karen = "118314831881209457359" %}
+{% assign gplus_adam = "114938785317899824004" %}
+{% assign gplus_width = "200" %}
+
+<div class="container">
+	<header>
+		<div class="page-header">
+			{% include 'global-icons-share' %}
+			<h1>About us <small>our story, team and company information.</small></h1>
+		</div>
+	</header>
+
+	<div class="row">
+		<div class="col-sm-9">
+
+			<p class="text-center"><img class="img-thumbnail" alt="Karen and Jim Wooding - Directors of Spacemaker Wardrobes" src="{{ '2017-07-21-jim-karen-wooding.jpg' | asset_img_url: '400x' }}"><br><span class="text-small text-muted text-italic">Karen &amp; Jim Wooding - Directors</span></p>
+
+
+			<p>Spacemaker Wardrobes Pty Ltd is an established business based on the Gold Coast. Spacemaker Wardrobes is an industry leader in the creation of stylish DIY (do it yourself) <strong>wardrobes</strong> and <strong>sliding wardrobe doors</strong> which will improve and add value to your home.</p>
+
+			<p>Established in 1992, Spacemaker Wardrobes Pty Ltd is a family owned and operated company.</p>
+
+			{% comment %}
+			<hr>
+
+			<h2>Company Information</h2>
+			<p>Mission, etablished date, etc</p>
+			{% endcomment %}
+
+			<hr>
+
+			<h2>Our Team</h2>
+
+			<div class="row">
+				<div class="col-sm-4">
+					{% comment %}Jim{% endcomment %}
+					{% include "global-gplus-person", gplus_id: gplus_jim %}
+				</div>
+				<div class="col-sm-4">
+					{% comment %}Karen{% endcomment %}
+					{% include "global-gplus-person", gplus_id: gplus_karen %}
+				</div>
+				<div class="col-sm-4">
+					{% comment %}Adam{% endcomment %}
+					{% include "global-gplus-person", gplus_id: gplus_adam %}
+				</div>
+			</div>
+		</div>
+
+		<div class="hidden-xs col-sm-3">
+			{% include 'global-icons-trust' %}
+		</div>
+
+	</div>
+</div>

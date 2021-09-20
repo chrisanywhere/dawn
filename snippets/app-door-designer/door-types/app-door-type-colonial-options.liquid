@@ -1,0 +1,23 @@
+{% assign colonialStyles = 'buckingham, rochester, sandringham, cromwell, hastings' | split: ',' %}
+<div class="panel panel-default collapse" id="colonialOptionsCollapse">
+	<div class="panel-heading">Colonial Options</div>
+	<div class="panel-body">
+		<div class="row colonial-mdf">
+
+			{% for c in colonialStyles %}
+				{% assign style = c | strip | downcase %}
+				{% assign styleCamelCase = c | strip | camelcase %}
+				{% capture styleInclude %}app-insert-colonial-{{ style }}{% endcapture %}
+				<div class="col-md-2">
+					<a href="#" id="insertSelectLink-{{ style }}" class="thumbnail" title="Colonial - {{ styleCamelCase }}" data-insert="{{ style }}" data-option="colonialOptionsCollapse">
+					  <div class="insert-option colonial {{ style }}">
+					    {% include styleInclude %}
+					  </div>
+					</a>
+					<p class="text-center text-muted">{{ styleCamelCase }}</p>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+</div>

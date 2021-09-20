@@ -1,0 +1,7 @@
+{% if product-price.price_varies %}
+<small class="muted">From&nbsp;</small><span itemprop="price" class='money'>{{ product-price.price_min | money }}</span>&nbsp;<small class="muted">(incl GST)</small>
+{% else %}
+<span itemprop="price" class='money'>{{ product-price.price | money }}</span>&nbsp;<small class="muted">(incl GST)</small>
+{% endif %}
+{% if product-price.compare_at_price_min > 0 %}
+&nbsp;<span class="label label-success">On sale</span>{% endif %}

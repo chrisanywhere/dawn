@@ -1,0 +1,9 @@
+{% if article.tags.size > 0 %}
+    <ul class="{{ class }}">
+        {% for tag in article.tags %}
+            <li>
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}"><i class="icon icon-tag"></i> {{ tag }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

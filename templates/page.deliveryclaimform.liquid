@@ -1,0 +1,165 @@
+<div class="container">
+	<header>
+		<div class="page-header">
+			{% include 'global-icons-share' %}
+			<h1>Damaged Items Claim Form</h1>
+			<p class="lead">Please complete this form if your order contains damaged items.</p>
+		</div>
+	</header>
+
+	{% form 'contact' %}
+	{% if form.posted_successfully? %}
+	<div class="alert alert-success" role="alert">
+		<p><b><span class="icon icon-check"></span>&nbsp;Thankyou for completing the Damaged Items Claim form.</b> We have received your claim and we will communicate the result / resolution to you within two calendar weeks of all information for the claim being provided.</p>
+	</div>
+	{% endif %}
+
+	{% if form.errors %}
+	<div class="alert alert-danger" role="alert">
+		<p><b><span class="icon icon-exclamation-triangle"></span>&nbsp;Oops, sorry.</b> We were unable to send your form because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the following and send again:</p>
+		<ul>
+		{% for field in form.errors %}
+		<li>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</li>
+		{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+
+
+	<input type="hidden" id="input_formtype" name="contact[form type]" value="Damaged Items Claim Form">
+
+
+	<div class="form-horizontal">
+
+		<h3>Your Details <small>all fields required</small></h3>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+				    <label for="input_name" class="col-md-5 control-label">Your name</label>
+				    <div class="col-md-7">
+						<input type="text" class="form-control" id="input_name" name="contact[name]">
+				    </div>
+				</div>
+				
+				<div class="form-group">
+				    <label for="input_email" class="col-md-5 control-label">Your E-mail</label>
+				    <div class="col-md-7">
+						<input type="email" class="form-control form-textbox" id="input_email" name="contact[email]">
+				    </div>
+				</div>
+
+				<div class="form-group">
+					<label for="input_phone" class="col-md-5 control-label">Phone Number</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control form-textbox" id="input_phone" name="contact[phone]">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+
+				<div class="form-group">
+					<label for="input_address" class="col-md-5 control-label">Delivery Address</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control form-textbox" id="input_address" name="contact[address]">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="input_suburb" class="col-md-5 control-label">Suburb</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control form-textbox" id="input_suburb" name="contact[suburb]">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="input_state" class="col-md-5 control-label">State</label>
+					<div class="col-md-7">
+						<select class="form-control" id="input_state" name="contact[state]">
+							<option>Queensland</option>
+							<option>New South Wales</option>
+							<option>Australian Capital Territory</option>
+							<option>Victoria</option>
+							<option>Tasmania</option>
+							<option>Northern Territory</option>
+							<option>South Australia</option>
+							<option>Western Australia</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="input_postcode" class="col-md-5 control-label">Postcode</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control form-textbox" id="input_postcode" name="contact[postcode]">
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<hr>
+
+		<h3>Your Claim <small>all fields required</small></h3>
+		<p><span class="label label-primary">Important:</span> Please be specific and include as much information as possible.</p>
+
+		<hr>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="input_dategoodsdelivered" class="col-md-3 control-label">Date of Goods Delivered</label>
+					<div class="col-md-3">
+						<input type="text" class="form-control form-textbox" id="input_dategoodsdelivered" name="contact[date of goods delivered]">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="input_descofincident" class="col-md-3 control-label">Description of Incident</label>
+					<div class="col-md-9">
+						<textarea id="input_descofincident" class="form-control form-textarea" name="contact[description of incident]" rows="5"></textarea>
+					</div>
+					<div class="col-md-9 col-md-offset-3">
+						<p class="help-block">Please include as much information as possible.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr>
+
+		<h3>Supporting Documents</h3>
+
+		<p>Your claim must be accompanied by the following:</p>
+		<ul>
+			<li>Copy of Consignment Note</li>
+			<li>Digital Photographs of Damage</li>
+			<li>Copy of POD</li>
+			<li>Evidence of damage/loss</li>
+		</ul>
+		<p>Please send these documents in a separate email to info@spacemakerwardrobes.com.au</p>
+
+		<hr>
+
+		<div class="alert alert-info" role="alert">
+			<p><b><span class="icon icon-info-circle"></span>&nbsp;Declaration:</b> I declare that the above mentioned statements are true and accurate to the best of my knowledge.</p>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<div class="col-md-offset-3 col-md-4">
+					    <button type="submit" class="btn btn-primary">Send Claim Form</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+	
+	</div>
+	{% endform %}
+
+</div>

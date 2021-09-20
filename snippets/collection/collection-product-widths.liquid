@@ -1,0 +1,25 @@
+<h2>Choose your width:</h2>
+<p class="lead">Choose the <em>width</em> category which best matches your wardrobe{{ door }} opening:</p>
+<p><span class="label label-info">Example:</span> If your wardrobe{{ door }} opening is 2250mm wide, you should choose the <em>2100mm to 2400mm</em> category. <a class="pull-right" href="/pages/measuring-guide" title="Sliding Wardrobe Doors - Measure Guide"><span class="icon icon-ruler"></span>&nbsp;How to Measure Guide</a></p>
+<hr>
+{% capture current_url %}/collections/{{ collection.handle }}/{% for tag in collection.all_tags %}{% if current_tags contains tag %}{{ tag }}{% endif %}{% endfor %}{% endcapture %}
+<div class="row text-center">
+    {% for link in linklists.collection-widths.links %}
+    {% capture add_tag_url %}{{ current_url }}{{ link.url | replace: '/', '+' }}{% endcapture %}
+    {% capture img_path %}{% if collection.handle == wardrobes %}{% for tag in collection.all_tags %}{% if current_tags contains tag %}{{ tag }}{% endif %}{% endfor %}{% elsif collection.handle == doors %}standard{% endif %}{% endcapture %}
+    {% capture image_url %}width-categories-{{ img_path }}-{{ link.url | replace: '/', '' }}.png{% endcapture %}
+    <div class="col-md-4 mb12">
+        <div class="thumbnail">
+            <div class="thumb-padding">
+                <img class="img-responsive" src="{{ image_url | asset_url }}" >
+            </div>
+            <div class="caption">
+                <p><a href="{{ add_tag_url }}">{{ link.title }}</a></p>
+                <p>
+                    <a class="btn btn-primary" href="{{ add_tag_url }}">Select this width</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

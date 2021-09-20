@@ -1,0 +1,64 @@
+<div class="row">
+
+  <div class="col-md-8">
+
+    <h4>Cut to size</h4>
+    <p>Your wardrobe will be custom made to fit your wardrobe opening. Simply fill out all the fields below and click the add to cart button:</p>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
+          <label for="customwidth">Custom Width (mm)</label>
+          <input type="text" class="form-control required" id="customwidth" name="properties[Custom Width]" required data-error="Please fill in this field if you want to proceed.">
+        </div>
+      </div>
+
+      <div class="col-md-8 col-md-offset-2">
+        <p class="text-center">
+          {% if product.tags contains 'straight' %}
+            <img class="img-responsive" src="{{ 'fields-straight-wall.png' | asset_url }}" alt="Straight Wall Opening - Plan View" title="Straight Wall Opening - Plan View" />
+          {% elsif product.tags contains 'lcnr' %}
+            <img class="img-responsive" src="{{ 'fields-wall-to-left.png' | asset_url }}" alt="Left Corner Wardrobe Opening - Plan View" title="Left Corner Wardrobe Opening - Plan View" />
+          {% elsif product.tags contains 'rcnr' %}
+            <img class="img-responsive" src="{{ 'fields-wall-to-right.png' | asset_url }}" alt="Right Corner Wardrobe Opening - Plan View" title="Right Corner Wardrobe Opening - Plan View" />
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-3 vertical-center-cnr">
+        <div class="form-group">
+          <label for="leftheight">Left Height (mm)</label>
+          <input type="text" class="form-control required" id="leftheight" name="properties[Left Height]" required data-error="Please fill in this field if you want to proceed.">
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <p class="text-center">
+          {% if product.tags contains 'straight' %}
+            <img class="img-responsive" src="{{ 'fields-straight-wall-image.png' | asset_url }}" alt="Straight Wall Opening - Front View" title="Straight Wall Opening - Front View" />
+          {% elsif product.tags contains 'lcnr' %}
+            <img class="img-responsive" src="{{ 'fields-LH-corner-image.png' | asset_url }}" alt="Left Corner Wardrobe Opening - Front View" title="Left Corner Wardrobe Opening - Front View" />
+          {% elsif product.tags contains 'rcnr' %}
+            <img class="img-responsive" src="{{ 'fields-RH-corner-image.png' | asset_url }}" alt="Right Corner Wardrobe Opening - Front View" title="Right Corner Wardrobe Opening - Front View" />
+          {% endif %}
+        </p>
+      </div>
+
+      <div class="col-md-3 vertical-center-cnr">
+        <div class="form-group">
+          <label for="rightheight">Right Height (mm)</label>
+          <input type="text" class="form-control required" id="rightheight" name="properties[Right Height]" required data-error="Please fill in this field if you want to proceed.">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-4">{% include 'product-add-to-cart' %}</div>
+
+</div>

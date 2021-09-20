@@ -1,0 +1,148 @@
+<header>
+	<div class="page-header">
+		<h1 itemprop="name">{{ page_title }}</h1>
+		<p class="lead" itemprop="description">The {{ product.title }} sliding wardrobe door system is a set of DIY (do it yourself), flat pack, sliding wardrobe doors which are cut to size to fit your wardrobe door opening.</p>
+		<a class="pull-right" href="/pages/measuring-guide" title="Sliding Wardrobe Doors - Measure Guide"><span class="icon icon-ruler"></span>&nbsp;How to Measure Guide</a>
+		<div class="clearfix"></div>
+	</div>
+</header>
+
+{% include 'product-fields-doors' %}
+
+<hr>
+
+<h4><span class="icon icon-clipboard"></span>&nbsp;Product Specifications</h4>
+
+<div class="table-responsive">
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<th>What's included?</th>
+				<td>
+					<ul>
+						<li>All doors are included</li>
+						<li>Top &amp; bottom tracks</li>
+						<li>All hardware (screws, caps)</li>
+						<li>Soft close buffer strip</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Door Frames</th>
+				<td>
+					<dl class="dl-horizontal">
+				      <dt>Thickness:</dt>
+				      <dd>35mm</dd>
+					</dl>
+				</td>
+			</tr>
+			<tr>
+				<th>Top Track</th>
+				<td>
+					<dl class="dl-horizontal">
+				      <dt>Width:</dt>
+				      <dd>83mm</dd>
+				      <dt>Height:</dt>
+				      <dd>40mm</dd>
+					</dl>
+				</td>
+			</tr>
+			<tr>
+				<th>Bottom Track</th>
+				<td>
+					<dl class="dl-horizontal">
+				      <dt>Width:</dt>
+				      <dd>83mm</dd>
+				      <dt>Height:</dt>
+				      <dd>10mm</dd>
+					</dl>
+				</td>
+			</tr>
+			<tr>
+			{% if product.tags contains 'gyprock' %}
+				<th>Gyprock Panel</th>
+				<td>
+					<dl class="dl-horizontal">
+				      <dt>Thickness:</dt>
+				      <dd>10mm</dd>
+				      <dt>Materials:</dt>
+				      <dd>Raw Gyprock (unpainted)</dd>
+					</dl>
+				</td>
+			{% elsif product.tags contains 'colonial' %}
+				<th>Colonial Panel</th>
+				<td>
+					<dl class="dl-horizontal">
+				      <dt>Thickness:</dt>
+				      <dd>9mm</dd>
+				      <dt>Materials:</dt>
+				      <dd>9mm routed MDF (medium density fibreboard)</dd>
+				      <dt>Routing profile:</dt>
+				      <dd>V Groove (VJ) - <a href="#routingprofile" title="Routing Profile - More Information">more info <span class="caret"></span></a></dd>
+					</dl>
+				</td>
+			{% elsif product.tags contains 'vinyl' %}
+				<th>Vinyl Panel</th>
+				<td>
+					<dl class="dl-horizontal">
+				      <dt>Thickness:</dt>
+				      <dd>10mm</dd>
+				      <dt>Materials:</dt>
+				      <dd>Gyprock with paper thin vinyl covering on face</dd>
+					</dl>
+				</td>
+			{% elsif product.tags contains 'mirror' %}
+				<th>Mirror Insert</th>
+				<td>
+					<dl class="dl-horizontal">
+				      <dt>Thickness:</dt>
+				      <dd>4mm</dd>
+				      <dt>Materials:</dt>
+				      <dd>Vinyl backed safety mirror</dd>
+				      <dt>Safety:</dt>
+				      <dd>Complies with Australian Standards</dd>
+					</dl>
+				</td>
+			{% elsif product.tags contains 'painted-glass' %}
+				<th>Painted Glass</th>
+				<td>
+					<dl class="dl-horizontal">
+				      <dt>Thickness:</dt>
+				      <dd>4mm</dd>
+				      <dt>Materials:</dt>
+				      <dd>Vinyl backed safety glass</dd>
+				      <dt>Safety:</dt>
+				      <dd>Complies with Australian Standards</dd>
+					</dl>
+				</td>
+			{% endif %}
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<p><span class="label label-info">Heads up!</span> The price is per <em>set</em> of doors; for width categories up to 2400mm wide, this includes two doors. For width categories over 2400mm wide, this includes three doors.</p>
+
+{% if product.tags contains 'gyprock' or product.tags contains 'colonial' %}
+<hr>
+{% include 'product-images-insertcolours' %}
+{% endif %}
+
+<hr>
+
+{% include 'product-images-framecolours' %}
+
+{% if product.tags contains 'vinyl' %}
+	<hr>
+	{% include 'product-images-vinylcolours' %}
+{% endif %}
+
+{% if product.tags contains 'colonial' %}
+	<hr>
+	{% include 'product-images-colonialstyles' %}
+{% endif %}
+
+{% if product.tags contains 'painted-glass' %}
+	<hr>
+	{% include 'product-images-glasscolours' %}
+{% endif %}

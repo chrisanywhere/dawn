@@ -1,0 +1,137 @@
+<form id="submitDimensionsForm" class="needs-validation">
+	<div class="row justify-content-center">
+		<div class="col-auto mt-2 mb-2">
+			<div class="input-group">
+				<span class="input-group-text" id="basic-addon1">Top Width (mm)</span>
+				<input id="topWidth" type="text" class="form-control" placeholder="E.g. 2201" aria-label="Top Width" aria-describedby="basic-addon1" required>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-2 d-flex align-items-center justify-content-end">
+			<div class="input-group w-60">
+				<span class="input-group-text" id="basic-addon1">Left Height (mm)</span>
+				<input id="leftHeight" type="text" class="form-control" placeholder="E.g. 1802" aria-label="Left Height" aria-describedby="basic-addon1" required>
+			</div>
+		</div>
+		<div class="col-8 d-flex justify-content-center">
+			{% comment %}this is the base 2 door layout. all additional door layouts are stored in snippets/app-doors-layouts.liquid{% endcomment %}
+			<div id="doorApp" class="ba1">
+				<div id="doorsContainer" class="doors-container bt1 br1 bl1">
+					<div class="top-track gradient vertical chrome"></div>
+					<div id="doorsSubContainer" class="doors">
+						{% assign doorID = 'doorTemplate' %}
+						{% assign title = 'Door 1 - click to change' %}
+						{% assign insertId = 'door1insert' %}
+						{% assign data-option = 'parent' %}
+						{% capture insert %}
+							{% assign insertClass = 'mirror' %}
+							<!-- app-insert-standard -->
+							<div data-type="insert" class="insert {{ insertClass }}" data-insert="{{ insertClass }}"></div>
+							<!-- /app-insert-standard -->
+						{% endcapture %}
+
+						<!-- Door HTML template -->
+						<div id="{{ doorID }}" class="door boxshadow01 pr1 pull-left hidden" data-toggle="tooltip" title="{{ title }}">
+							<div class="buffer pull-left"></div>
+							<div class="left frame gradient pull-left horizontal chrome"></div>
+							<div class="insert-wrapper w96 pull-left">
+								<a id="{{ insertId }}" href="#" class="insertSelector" data-option="{{ data-option }}" data-bs-toggle="modal" data-bs-target="#insertSelector" data-door-id="{{ doorID }}">
+									{{ insert }}
+								</a>
+								<div class="bottom-frame gradient frame-border horizontal chrome"></div>
+							</div>
+						</div>
+						<!-- /Door HTML template -->
+					</div>
+					<div class="bottom-track gradient vertical chrome"></div>
+				</div>
+				<div class="botjamb jamb pull-left bt1 br1 bl1"></div>
+				<div class="clearfix"></div>
+			</div>
+
+			<!-- Modal: Door selector -->
+			<div id="insertSelector" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="insertSelectorLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					  <h4 class="modal-title">Choose your insert</h3>
+					</div>
+					<div class="modal-body" id="insertColour">
+					  <!-- app-insert-options -->
+					  {% assign insertOptions = 'gyprock, vinyl, colonial, mirror, glass' | split: ',' %}
+						<div class="row colonial-mdf">
+						{% for i in insertOptions %}
+							{% assign insert = i | strip | downcase %}
+							{% capture insertOption %}app-door-type-{{ insert }}{% endcapture %}
+							<div class="col-md-2">
+							{% include insertOption %}    
+							</div>
+						{% endfor %}
+						</div>
+
+						<div class="row">
+						<div class="col-md-12">
+							{% include 'app-door-type-colonial-options' %}
+							{% include 'app-door-type-vinyl-options' %}
+						</div>
+						</div>
+						<!-- app-insert-options -->
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<!-- /Modal: Door selector -->
+		</div>
+		<div class="col-2 d-flex align-items-center justify-content-start">
+			<div class="input-group w-60">
+				<span class="input-group-text" id="basic-addon1">Right Height (mm)</span>
+				<input id="rightHeight" type="text" class="form-control" placeholder="E.g. 1801" aria-label="Right Height" aria-describedby="basic-addon1" required>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row justify-content-center">
+		<div class="col-auto mt-2 mb-2">
+			<div class="input-group">
+				<span class="input-group-text" id="basic-addon1">Bottom Width (mm)</span>
+				<input id="bottomWidth" type="text" class="form-control" placeholder="E.g. 2202" aria-label="Bottom Width" aria-describedby="basic-addon1" required>
+			</div>
+		</div>
+	</div>
+
+	<div class="row justify-content-center">
+		<div class="col-auto mt-2 mb-2">
+			<div class="mt-2 mb-2 text-center">
+				<button id="submitButton" class="btn btn-primary" type="submit">Submit</button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div id="errorMessage" class="alert alert-danger hidden">
+			<input type="checkbox">
+		</div>
+	</div>
+
+	<div class="row">
+		<div id="warningMessage" class="alert alert-warning hidden">
+			<div id="mustAcceptWarning" class="hidden">
+				I accept:
+
+				<input type="checkbox">
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div id="infoMessage" class="alert alert-success hidden"></div>
+	</div>
+</form>

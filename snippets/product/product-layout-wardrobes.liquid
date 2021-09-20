@@ -1,0 +1,65 @@
+<header>
+	<div class="page-header">
+		<div class="row">
+			<div class="col-md-2 thumbnails">
+				<a class="thumbnail" href="{{ product.featured_image | product_img_url: 'grande' }}" title="{{ product.title }}" data-lightbox="lightbox">
+					<img class="img-responsive" src="{{ product.featured_image | product_img_url: 'compact' }}" alt="{{ product.title }}">
+				</a>
+				<p class="text-center small">Click image to enlarge</p>
+			</div>
+			<div class="col-md-10">
+				<h1 itemprop="name">{{ page_title }}</h1>
+				<p class="lead" itemprop="description">The {{ product.title }} is a DIY (do it yourself), flat pack, built in wardrobe which is cut to size to fit your wardrobe opening.</p>
+			</div>
+		</div>
+	</div>
+</header>
+
+{% if product.tags contains 'standard' %}
+	{% include 'product-fields-standard' %}
+{% elsif product.tags contains 'straight' or product.tags contains 'lcnr' or product.tags contains 'rcnr' %}
+	{% include 'product-fields-straight' %}
+{% endif %}
+
+<hr>
+
+<h4><span class="icon icon-clipboard"></span>&nbsp;Product Specifications</h4>
+
+<div class="table-responsive">
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<th>Top Shelf</th>
+				<td>The top shelf sits at a height of 2050mm. This can be customised.</td>
+			</tr>
+			<tr>
+				<th>Gables</th>
+				<td>
+					<ul>
+						<li>Depth: 420mm</li>
+						<li>Each gable can hold a maximum weight of 40kg</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<th>Shelving</th>
+				<td>Depth: 415mm</td>
+			</tr>
+			<tr>
+				<th>Materials</th>
+				<td>High quality 16mm moisture resistant white board &amp; 1mm PVC edging</td>
+			</tr>
+			<tr>
+				<th>Suspended System</th>
+				<td>The wardrobes are suspended off walls using our suspended wardrobe system</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<p><span class="label label-info">Heads up!</span> Our wardrobes do not have backs. Your existing walls <em>are</em> visible.</p>
+
+<hr>
+
+<h4><span class="icon icon-frameless-doors icon-small"></span>&nbsp;Sliding Wardrobe Doors</h4>
+<p>Our wardrobes <em>do not</em> come with sliding wardrobe doors. You need to order your doors separately from the  <a href="/collections/sliding-wardrobe-doors/2100h+1200w">sliding wardrobe doors</a> section.</p>

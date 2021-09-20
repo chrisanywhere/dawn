@@ -1,108 +1,203 @@
-# Dawn
+smtheme
+=======
 
-[![Build status](https://github.com/shopify/dawn/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Shopify/dawn/actions/workflows/ci.yml?query=branch%3Amain)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?color=informational)](/.github/CONTRIBUTING.md)
+The Shopify theme for Spacemaker Wardrobes
 
-[Getting started](#getting-started) |
-[Staying up to date with Dawn changes](#staying-up-to-date-with-dawn-changes) |
-[Developer tools](#developer-tools) |
-[Contributing](#contributing) |
-[Code of conduct](#code-of-conduct) |
-[Theme Store submission](#theme-store-submission) |
-[License](#license)
+## CURRENT VERSIONS ##
+======================
+Bootstrap:      3.3.5
+Lightbox:       2.8.1
+html5shiv:      
+Respond:        
+FontIcons
+BS Validator:	0.5.3
+jQuery:			2.1.4
+Spin:			2.3.2
+Instafeed:		1.3.2
 
-Dawn represents a HTML-first, JavaScript-only-as-needed approach to theme development. It's Shopify's first source available theme with performance, flexibility, and [Online Store 2.0 features](https://www.shopify.com/partners/blog/shopify-online-store) built-in and acts as a reference for building Shopify themes.
+---
 
-* **Web-native in its purest form:** Themes run on the [evergreen web](https://www.w3.org/2001/tag/doc/evergreen-web/). We leverage the latest web browsers to their fullest, while maintaining support for the older ones through progressive enhancement—not polyfills.
-* **Lean, fast, and reliable:** Functionality and design defaults to “no” until it meets this requirement. Code ships on quality. Themes must be built with purpose. They shouldn’t support each and every feature in Shopify.
-* **JavaScript not required, fails gracefully:** We extract every bit of speed and functionality out of HTTP, semantic HTML, and CSS before writing our first line of JavaScript. JavaScript can only be used to progressively enhance features.
-* **Server-rendered:** HTML must be rendered by Shopify servers using Liquid. Business logic and platform primitives such as translations and money formatting don’t belong on the client. Async and on-demand rendering of parts of the page is OK, but we do it sparingly as a progressive enhancement.
-* **Functional, not pixel-perfect:** The Web doesn’t require each page to be rendered pixel-perfect by each browser engine. Using semantic markup, progressive enhancement, and clever design, we ensure that themes remain functional regardless of the browser.
+## BOOTSTRAP ##
+===============
 
-You can find a more detailed version of our theme code principles in the [contribution guide](https://github.com/Shopify/dawn/blob/main/.github/CONTRIBUTING.md#theme-code-principles).
+1.	use the bootstrap customiser on the bootstrap website;
+2.	uncheck glyphicons;
+3.	change typography as below;
+4.	press 'compile and download' button;
+5.	update the css file in assets directory.
 
-## Getting started
+### typography changes ###
 
-1. Fork the repository and clone it:
-```sh
-git clone git@github.com:your-username/dawn.git
-cd dawn
-```
-2. Install the [Shopify CLI](https://github.com/Shopify/shopify-cli) by following [these steps](https://shopify.dev/themes/tools/cli/installation).
-3. Launch a development server in the `dawn/` folder:
-```sh
-shopify theme serve
-```
+ @font-size-base:		16px;
+ @line-height-base:		1.5; // 24/16
 
->:information_source: You'll need access to a Shopify store in order to get started with theme development. If you don't already have one, you can set up a [development store](https://shopify.dev/themes/tools/development-stores).
+### modal popups ###
+{% assign modal-id = 'deliveryTermsModal' %}
+{% assign modal-label = 'deliveryTermsLabel' %}
+{% assign modal-title = 'Delivery Terms &amp; Conditions' %}
+{% capture modal-body %}
+	{% include 'global-delivery-content' %}
+{% endcapture %}
+{% include 'helper-modal-popup' %}
 
-## Staying up to date with Dawn changes
+### collapse ###
+{% assign collapse-id = "qld" %}
+{% capture collapse-title %}Areas Included <span class="caret"></span>{% endcapture %}
+{% capture collapse-body %}
+	{% include 'collapse-body-snippet' %}
+{% endcapture %}
+{% include 'helper-collapse' %}
 
-Say you're building a new theme off Dawn but you still want to be able to pull in the latest changes, you can add a remote `upstream` pointing to this Dawn repository.
+### Font Icons ###
+url:  fonticons.com
+Just ensure that you have the latest version of Font Icons in the theme.liquid file. 
+Website and instructions:  https://fonticons.com
 
-1. Navigate to your local theme folder.
-2. Verify the list of remotes and validate that you have both an `origin` and `upstream`:
-```sh
-git remote -v
-```
-3. If you don't see an `upstream`, you can add one that points to Shopify's Dawn repository:
-```sh
-git remote add upstream https://github.com/Shopify/dawn.git
-```
-4. Pull in the latest Dawn changes into your repository:
-```sh
-git fetch upstream
-git pull upstream main
-```
+*Additional classes*
+icon-dark
+icon-big
+icon-small
 
-## Developer tools
+### Custom CSS & JS ###
+for uglify, in node run cd c:\Users\Adam\Documents\Spacemaker\smtheme\SpaceMaker.Web\_cssjs
+uglify:		uglifyjs custom.js -o c:\Users\Adam\Documents\Spacemaker\smtheme\SpaceMaker.Web\assets\custom.min.js -c
+			where -o = output; -c = compress
 
-There are a number of really useful tools that the Shopify Themes team uses during development. Dawn is already set up to work with these tools.
+for SASS, in ruby run cd c:\Users\Adam\Documents\Spacemaker\smtheme\SpaceMaker.Web\_cssjs
+sass:		sass custom.scss c:\Users\Adam\Documents\Spacemaker\smtheme\SpaceMaker.Web\assets\customtest.min.css --style compressed --sourcemap=none
 
-### Shopify CLI
+### Lightbox Gallery ###
+http://lokeshdhakar.com/projects/lightbox2/
 
-[Shopify CLI](https://github.com/Shopify/shopify-cli) helps you build Shopify themes faster and is used to automate and enhance your local development workflow. It comes bundled with a suite of commands for developing Shopify themes—everything from working with themes on a Shopify store (e.g. creating, publishing, deleting themes) or launching a development server for local theme development.
+1.	CSS customisations: Open lightbox.css - change required paths, as follows:
 
-You can follow this [quick start guide for theme developers](https://github.com/Shopify/shopify-cli#quick-start-guide-for-theme-developers) to get started.
+{{ 'close.png' | asset_url }}
+{{ 'loading.gif' | asset_url }}
+{{ 'prev.png' | asset_url }}
+{{ 'next.png' | asset_url }}
 
-### Theme Check
 
-We recommend using [Theme Check](https://github.com/shopify/theme-check) as a way to validate and lint your Shopify themes.
+### SPIN ###
+From http://fgnass.github.io/spin.js/#!
+Github:  https://github.com/fgnass/spin.js
+Usage:
+// prepend to selected element:
+jQuery(doorApp).prepend(spinner.el);
 
-We've added Theme Check to Dawn's [list of VS Code extensions](/.vscode/extensions.json) so if you're using Visual Studio Code as your code editor of choice, you'll be prompted to install the [Theme Check VS Code](https://marketplace.visualstudio.com/items?itemName=Shopify.theme-check-vscode) extension upon opening VS Code after you've forked and cloned Dawn.
+// start the spinner:
+jQuery(doorApp).data('spinner', spinner);
+// stop the spinner:
+jQuery(spinner.el).detach();
 
-You can also run it from a terminal with the following Shopify CLI command:
+### Images ###
+Maximum Width:	800px
+Height:			600px
 
-```bash
-shopify theme check
-```
+### Bootstrap Validator ###
+Used to validate forms and provide feedback / error messages to users
 
-### Continuous Integration
+URL:	http://bootstrapvalidator.com/
+github:	https://github.com/nghuuphuoc/bootstrapvalidator
+Now:  http://formvalidation.io/
 
-Dawn uses [GitHub Actions](https://github.com/features/actions) to maintain the quality of the theme. [This is a starting point](https://github.com/Shopify/dawn/blob/main/.github/workflows/ci.yml) and what we suggest to use in order to ensure you're building better themes. Feel free to build off of it!
 
-#### Shopify/lighthouse-ci-action
+### Instafeed ###
+https://github.com/stevenschobert/instafeed.js
+---
 
-We love fast websites! Which is why we created [Shopify/lighthouse-ci-action](https://github.com/Shopify/lighthouse-ci-action). This runs a series of [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) audits for the home, product and collections pages on a store to ensure code that gets added doesn't degrade storefront performance over time.
 
-#### Shopify/theme-check-action
+## WINDOWS STUFF ##
+===================
 
-Dawn runs [Theme Check](#Theme-Check) on every commit via [Shopify/theme-check-action](https://github.com/Shopify/theme-check-action).
+## Setup ##
+Github:		Github for Windows
+Nodejs:		4.2.2 (nodejs.org)
+SASS:		3.4.19
+uglifyjs:	2.4.15
+grunt:		0.1.13
+html minify: http://www.willpeavy.com/minifier/
 
-## Contributing
+### Git ###
+Github for Windows
 
-Want to make commerce better for everyone by contributing to Dawn? We'd love your help! Please read our [contributing guide](https://github.com/Shopify/dawn/blob/main/.github/CONTRIBUTING.md) to learn about our development process, how to propose bug fixes and improvements, and how to build for Dawn.
+### Node.js ###
+To update, go to nodejs.org/download/ and download the latest windows package.
+Open NodeJS and use "npm install -g packagename" to install packages. -g signifies global level.
+To view all packages installed, use "npm -g ls"
+To uninstall packages, use "npm -g uninstall packagename"
 
-## Code of conduct
+### Grunt ###
+npm install -g grunt-cli
 
-All developers who wish to contribute through code or issues, please first read our [Code of Conduct](https://github.com/Shopify/dawn/blob/main/.github/CODE_OF_CONDUCT.md).
+### SASS CSS - Ruby Plugin ##
+Ruby plugin - gem install sass
+Used to minify CSS & make easier to manage
 
-## Theme Store submission
+### Uglify JS ###
+npm install uglify-js -g
+Used to minify Javascript & make easier to manage
 
-The [Shopify Theme Store](https://themes.shopify.com/) is the place where Shopify merchants find the themes that they'll use to showcase and support their business. As a theme partner, you can create themes for the Shopify Theme Store and reach an international audience of an ever-growing number of entrepreneurs.
+---
 
-Ensure that you follow the list of [theme store requirements](https://shopify.dev/themes/store/requirements) if you're interested in becoming a [Shopify Theme Partner](https://themes.shopify.com/services/themes/guidelines) and building themes for the Shopify platform.
 
-## License
+## SUBLIME STUFF ##
+===================
 
-Copyright (c) 2021-present Shopify Inc. See [LICENSE](/LICENSE.md) for further details.
+## Setup ##
+Less-sublime:	https://github.com/danro/Less-sublime
+
+
+---
+
+
+## SHOPIFY STUFF ##
+===================
+
+### Updating Changes to Shopify ###
+
+Open Ruby console and run:  cd C:\Users\Adam\Documents\Spacemaker\smtheme
+
+### Instructions: ###
+
+*Download all the theme files*
+theme download
+
+*Upload a theme file*
+theme upload assets/layout.liquid
+
+*Remove a theme file*
+theme remove assets/layout.liquid
+
+*Completely replace shop theme assets with the local assets*
+theme replace
+
+*Watch the theme directory and upload any files as they change*
+theme watch
+
+See full documentation here:  (https://github.com/Shopify/shopify_theme)
+
+*Requires:*
+
+1.	Ruby
+2.	Shopify Theme gem (https://github.com/Shopify/shopify_theme)
+3.	Ruby DevKit - follow these instructions: (https://github.com/oneclick/rubyinstaller/wiki/development-kit)
+4.	JSON - as in above link
+
+### shopify for loops ###
+{% assign locations = 'Brisbane, Sunshine Coast, Ipswich, Cairns, Beaudesert, Gold Coast, Toowoomba, Townsville, Mackay, Mount Isa, Rockhampton, Gladstone, Bundaberg, Hervey Bay, Longreach, Currumbin' | split: ',' %}
+<ul class="list-group">
+{% for l in locations %}
+	{% assign location = l | strip %}
+	<li class="list-group-item">{{ location }}</li>
+{% endfor %}
+</ul>
+
+## Using Theme Kit ##
+to upload to specific environment:  theme upload --env=production assets/file.liquid
+
+
+
+## Markdown ##
+==============
+
+See (http://daringfireball.net/projects/markdown/) and (http://github.github.com/github-flavored-markdown/)

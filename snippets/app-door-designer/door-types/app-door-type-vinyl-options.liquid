@@ -1,0 +1,20 @@
+{% assign vinylColours = 'glacier, chalk, white-birch, buff, cameo, shadow' | split: ',' %}
+<div class="panel panel-default collapse" id="vinylOptionsCollapse">
+	<div class="panel-heading">Vinyl Options</div>
+	<div class="panel-body">
+		<div class="row vinyl">
+
+			{% for c in vinylColours %}
+				{% assign colour = c | strip | downcase %}
+				{% assign styleCamelCase = c | strip | camelcase %}
+				<div class="col-md-2">
+					<a href="#" id="insertSelectLink-{{ colour }}" class="thumbnail" title="Glacier (white)" data-insert="{{ colour }}" data-option="vinylOptionsCollapse">
+      					<div class="insert-option {{ colour }}"></div>
+    				</a>
+    				<p class="text-center text-muted">{{ styleCamelCase }}</p>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+</div>

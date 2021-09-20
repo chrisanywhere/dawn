@@ -1,0 +1,71 @@
+{% capture gyprock_info %}<p>We supply these door inserts in completely raw gyprock.  You are then able to paint the doors your desired colour.  This option suits those who wish to create custom spaces or are budget conscious.</p>{% endcapture %}
+{% capture vinyl_info %}<p>Vinyl doors are available in a range of colours. This option is good for easy maintenance and suits the budget conscious.</p>{% endcapture %}
+{% capture colonial_info %}<p>Colonial style doors are made of MDF and are supplied unpainted.  These unique products are available in many different profiles and particularly suit older style homes.  Colonial doors may be painted in any colour to create custom spaces.</p>{% endcapture %}
+{% capture framedmirror_info %}<p>Framed Mirrored doors are a good choice for those wishing to add light and space to a room.  Another benefit of these doors is their low-maintenance and ease of cleaning.</p>{% endcapture %}
+{% capture framelessmirror_info %}<p>Frameless Mirrored doors are a good choice for those wishing to add light and space to a room.  Another benefit of these doors is their low-maintenance and ease of cleaning.</p>{% endcapture %}
+{% capture paintedglass_info %}<p>Painted Glass doors are available in a range of colours. These premium products are extremely durable, withstanding time and usage with ease and looking sensational in any space.</p>{% endcapture %}
+
+<header>
+    <div class="page-header">
+    	<h1>{{ collection.title }} <small>to suit openings {% if current_tags contains '1200w' %}up to 1200mm wide{% elsif current_tags contains '1500w' %}1200mm to 1500mm wide{% elsif current_tags contains '1800w' %}1500mm to 1800mm wide{% elsif current_tags contains '2100w' %}1800mm to 2100mm wide{% elsif current_tags contains '2400w' %}2100mm to 2400mm wide{% elsif current_tags contains '2700w' %}2400mm to 2700mm wide{% elsif current_tags contains '3000w' %}2700mm to 3000mm wide{% elsif current_tags contains '3300w' %}3000mm to 3300mm wide{% elsif current_tags contains '3600w' %}3300mm to 3600mm wide{% endif %}</small></h1>
+		<p class="lead">
+			{% if collection.handle == doors %}Choose your sliding wardrobe door style:{% endif %}
+			{% if current_tags contains 'standard' %}Opening Type: Standard Opening
+			{% elsif current_tags contains 'straight' %}All <em>straight wall</em> wardrobe designs include panels either side and a top lid or bulkhead to enclose the wardrobe.
+			{% elsif current_tags contains 'lcnr' %}All <em>left corner</em> wardrobe designs include a panel on the right hand side and a top lid or bulkhead to enclose the wardrobe.
+			{% elsif current_tags contains 'rcnr' %}All <em>right corner</em> wardrobe designs include a panel on the left hand side and a top lid or bulkhead to enclose the wardrobe.
+			{% endif %}
+		</p>
+    </div>
+</header>
+
+{% comment %}
+
+<div class="alert alert-info">{% include 'collection-filters' %}</div>
+
+{% endcomment %}
+
+{% paginate collection.products by 10 %}
+<div class="row">
+{% for product in collection.products %}
+    {% capture vars %}
+	{% assign product_url = product.url | within: collection %}
+	{% endcapture %}
+    <div class="col-md-4 mb12">
+        <div class="thumbnail">
+        	{% if product.featured_image == blank %}
+				<div class="image_placeholder thumbnail">Product Image</div>
+			{% else %}
+				<img class="img-responsive" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title }}">
+			{% endif %}
+			{% if product.tags != empty %}{% include 'product-tags' %}{% endif %}
+			<div class="caption">
+				<h4>{{ product.title | link_to: product_url }}</h4>
+				<div>
+					<p>{% include 'product-price' with product %}</p>
+			        <p>
+			          {% if collection.handle == doors %}<a class="btn btn-default btn-sm" data-toggle="collapse" href="#productInfo-{{ product.id }}" aria-expanded="false" aria-controls="productInfo-{{ product.id }}">More Details</a>{% endif %}
+			          <a class="btn btn-primary btn-sm browse-btn" href="{{ product.url | within: collection }}">Order Now</a>
+			          <div class="clearfix"></div>
+			        </p>
+			        {% if collection.handle == doors %}
+					<div class="collapse" id="productInfo-{{ product.id }}">
+					  <div class="well">
+					    {% if product.tags contains 'gyprock' %}{{ gyprock_info }}{% endif %}
+					    {% if product.tags contains 'vinyl' %}{{ vinyl_info }}{% endif %}
+					    {% if product.tags contains 'colonial' %}{{ colonial_info }}{% endif %}
+					    {% if product.tags contains 'framed' and product.tags contains 'mirror' %}{{ framedmirror_info }}{% endif %}
+					    {% if product.tags contains 'frameless' and product.tags contains 'mirror' %}{{ framelessmirror_info }}{% endif %}
+					    {% if product.tags contains 'painted-glass' %}{{ paintedglass_info }}{% endif %}
+					  </div>
+					</div>
+					{% endif %}
+		  		</div>
+			</div>
+		</div>
+    </div>
+    {% cycle 'clear': '', '', '<div class="clearfix"></div>' %}
+{% endfor %}
+</div>
+{% include 'pagination' %}
+{% endpaginate %}

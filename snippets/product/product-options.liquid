@@ -1,0 +1,117 @@
+{% if product.type == 'built-in-wardrobe' %}
+<div class="row">
+  <div class="col-md-8 pull-right">
+    <div class="form-group">
+      <label for="wardrobename">Wardrobe Name</label>
+      <input type="text" class="form-control required" id="wardrobename" name="properties[Wardrobe Name]" required data-error="Please check this box if you want to proceed.">
+      <span class="help-block">eg. Bedroom 1</span>
+    </div>
+  </div>
+</div>
+{% elsif product.type == 'sliding-wardrobe-doors' or product.type == 'sliding-wardrobe-doors-combo' %}
+<div class="row">
+  <div class="col-md-8 pull-right">
+    <div class="form-group">
+      <label for="setname">Set Name</label>
+      <input type="text" class="form-control required" id="setname" name="properties[Set Name]" required data-error="Please check this box if you want to proceed.">
+      <span class="help-block">eg. Bedroom 1</span>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if product.tags contains 'straight' or product.tags contains 'lcnr' or product.tags contains 'rcnr' %}
+<div class="row">
+  <div class="col-md-8 pull-right">
+    <div class="form-group">
+      <label for="corniceheight">Cornice Height</label>
+      <input type="text" class="form-control required" id="corniceheight" name="properties[Cornice Height]" required data-error="Please check this box if you want to proceed.">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 pull-right">
+    <div class="form-group">
+      <label for="floortype">Floor Type</label>
+      <input type="text" class="form-control required" id="floortype" name="properties[Set Name]" required data-error="Please check this box if you want to proceed.">
+      <span class="help-block">eg. carpet/concrete</span>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+{% if product.tags contains 'vinyl' %}
+<div class="row">
+  <div class="col-md-8 pull-right">
+    <div class="form-group">
+      <label for="vinylcolour">Vinyl Colour</label>
+      <select class="form-control" id="vinylcolour" name="properties[Vinyl Colour]">
+        <option>Please Select</option>
+        <option>Glacier (white)</option>
+        <option>Chalk</option>
+        <option>White Birch</option>
+        <option>Buff</option>
+        <option>Cameo</option>
+      </select>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if product.tags contains 'framed' %}
+<div class="row">
+  <div class="col-md-8 pull-right">
+    <div class="form-group">
+      <label for="framecolour">Frame Colour</label>
+      <select class="form-control" id="framecolour" name="properties[Frame Colour]">
+        <option>Please Select</option>
+        <option>White</option>
+        <option>Matt Natural</option>
+        <option>Chrome</option>
+        <option>Cream</option>
+        <option>Almond</option>
+        <option>Black</option>
+      </select>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if product.tags contains 'frameless' and product.tags contains 'mirror' %}
+<div class="row">
+  <div class="col-md-8 pull-right">
+    <div class="form-group">
+      <label for="framecolour">Frame Colour</label>
+      <select class="form-control" id="framecolour" name="properties[Frame Colour]">
+        <option>Please Select</option>
+        <option>White</option>
+        <option>Matt Natural</option>
+        <option>Chrome</option>
+        <option>Black</option>
+      </select>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if product.tags contains 'colonial' %}
+<div class="row">
+  <div class="col-md-8 pull-right">
+    <div class="form-group">
+      <label for="colonialstyle">Colonial Style</label>
+      <select class="form-control" id="colonialstyle" name="properties[Colonial Style]">
+        <option>Please Select</option>
+        <option>Buckingham</option>
+        <option>Rochester</option>
+        <option>Windsor</option>
+        <option>Sandringham</option>
+        <option>Cromwell</option>
+        <option>Hastings</option>
+        <option>VJ</option>
+      </select>
+    </div>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,26 @@
+{% include 'global-door-tags' %}
+<ul class="list-unstyled list-inline list-tooltips tooltips">
+	{% if product.tags contains 'clean' %}
+	<li>{{ clean_icon }}</li>
+	{% endif %}
+
+	{% if product.tags contains 'paint' %}
+	<li>{{ paint_icon }}</li>
+	{% endif %}
+
+	{% if product.tags contains 'colours' %}
+	<li>{{ colours_icon }}</li>
+	{% endif %}
+
+	{% if product.tags contains 'styles' %}
+	<li>{{ styles_icon }}</li>
+	{% endif %}
+
+	{% if product.tags contains 'framed' %}
+	<li>{{ framed_icon }}</li>
+	{% endif %}
+  
+	{% if product.tags contains 'frameless' %}
+	<li>{{ frameless_icon }}</li>
+	{% endif %}
+</ul>

@@ -1,0 +1,334 @@
+{{ 'liquid.min.js' | asset_url | script_tag }}
+<div data-scope="shipping-calculator" class="{{ settings.shipping_calculator_css_container_classes }}">
+  <div id="shipping-calculator-summary">
+    <input type="hidden" data-cart-subtotal="{{ cart.total_price }}" />
+    <input type="hidden" data-cart-total />
+    <input type="hidden" data-cart-shipping />
+  </div>
+  {% capture default_province %} {% if shop.customer_accounts_enabled and customer and customer.default_address.province != '' %} {{ customer.default_address.province }} {% endif %} {% endcapture %}
+  {% capture default_zip %} {% if shop.customer_accounts_enabled and customer and customer.default_address != '' %} {{ customer.default_address.zip }} {% endif %} {% endcapture %}
+  {% assign use_customer_address = false %}
+  {% if settings.shipping_calculator_use_customer_address and shop.customer_accounts_enabled and customer and customer.default_address != empty %}
+    {% assign use_customer_address = true %}
+  {% endif %}
+  {% assign holidays = settings.shipping_calculator_holidays | newline_to_br | split: "<br />" | json | remove: "\r" | remove: "\n" %}
+  <div id="shipping-calculator" class="cart-shipping" data-context="rates">
+    <div id="shipping-form" class="cart-shipping-form" style="display: none;">
+      <h3 class="cart-shipping-header"> {{ settings.shipping_calculator_form_header }} </h3>
+      <p class="cart-country-selector">
+        <select class="form-control input-sm {{ settings.shipping_calculator_css_select_classes }}" id="address_country" name="address[country]" data-default="">
+          {{ country_option_tags | replace: "-- Please Select --", "Select Country" }}
+        </select>
+      </p>
+      <p id="address_province_container" style="display: none;">
+        <select class="form-control input-sm {{ settings.shipping_calculator_css_select_classes }}" id="address_province" name="address[province]" data-default="{{ default_province | strip }}"></select>
+      </p>
+      <p class="cart-zip-container">
+        <input class="form-control input-sm {{ settings.shipping_calculator_css_text_classes }}" type="text" id="address_zip" name="address[zip]" value="{{ default_zip | strip }}" placeholder="{{ settings.shipping_calculator_postal_code_placeholder }}" autocomplete="off" />
+        <button href="" class="cart-submit btn btn-secondary {{ settings.shipping_calculator_css_button_classes }}" data-get-rates>{{ settings.shipping_calculator_get_estimate_button_text }}</button>
+      </p>
+    </div>
+    <div id="shipping-results" class="cart-shipping-results">
+      <p class="results-text">
+        {{ settings.shipping_calculator_text_while_calculating }}
+        <div class="sk-circle">
+          <div class="sk-circle1 sk-child"></div>
+          <div class="sk-circle2 sk-child"></div>
+          <div class="sk-circle3 sk-child"></div>
+          <div class="sk-circle4 sk-child"></div>
+          <div class="sk-circle5 sk-child"></div>
+          <div class="sk-circle6 sk-child"></div>
+          <div class="sk-circle7 sk-child"></div>
+          <div class="sk-circle8 sk-child"></div>
+          <div class="sk-circle9 sk-child"></div>
+          <div class="sk-circle10 sk-child"></div>
+          <div class="sk-circle11 sk-child"></div>
+          <div class="sk-circle12 sk-child"></div>
+        </div>
+      </p>
+    </div>
+  </div>
+
+  {% raw %}
+  <script id="shipping-results-template" type="text/liquid">
+    <div class="{% if success %}success{% else %}error{% endif %}">
+      {% if address %} <h2 class="cart-shipping-header">{{ messages.title }}</h2> {% endif %}
+      {% if success %}
+        {% if available_rates.length > 0 %}
+          <div class="cart-shipping-rates-container">
+            <ul class="cart-shipping-rates {{ settings.shipping_calculator_css_list_classes }}" data-shipping-rates>
+            {% for rate in available_rates %}
+              {% capture rate_price %} {% if rate.price == 0 %}{{ messages.free_label | strip }}{% else %}{{ rate.price | money | strip }}{% endif %} {% endcapture %}
+              {% capture formatted_rate %} {{ rate.formatted_rate | replace: rate.price, rate_price | strip }} {% endcapture %}
+              <li class="{{ settings.shipping_calculator_css_list_item_classes }}">
+                <label class="{% if available_rates.length > 1 %}radio-label{% endif %} {{ settings.shipping_calculator_css_label_classes }}">
+                  {% if available_rates.length > 1 %}
+                    <input name="shipping-rate" type="radio" {% if forloop.first %}checked{% endif %} value="{{ rate.price }}"/>
+                  {% endif %}
+                  <span class="results-text label-text">
+                    <strong>{{ formatted_rate }}</strong>
+                    {% if rate.delivery_estimate %}
+                    <span class="text-highlight delivery-estimate">{{ rate.delivery_estimate | replace: 'next in', 'next' | replace: 'mute', 'minute' }}</span>
+                    {% comment %}CART ATTRIBUTE FOR ADDING ESTIMATE TO ORDER EMAIL{% endcomment %}
+                    <input type="hidden" name="attributes[Despatch Date]" value="{{ rate.despatch_date }}">
+                    {% endif %}
+                  <span>
+                </label>
+              </li>
+            {% endfor %}
+            </ul>
+            <p class="cart-additional-success-note"> <small> {{ messages.additional_success_note }} </small> </p>
+          </div>
+          {% if address %}
+          <p class="cart-wrong-location">
+            <a href="" data-show-calculator>{{ messages.wrong_location }}</a>
+          </p>
+          {% endif %}
+        {% else %}
+        <p class="results-text">{{ messages.no_rates_found }}</p> <br />
+        <p class="cart-try-different-address">
+          <a href="" data-show-calculator>{{ messages.try_different }}</a>
+        </p>
+      {% endif %}
+    {% else %}
+      <p class="cart-error-feedback">{{ error_feedback }}</p>
+      {% endif %}
+    </div>
+  </script>
+  {% endraw %}
+  {{ '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js' | script_tag }}
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {{ 'cart.min.js' | asset_url | script_tag }}
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  {{ '//js.maxmind.com/js/apis/geoip2/v2.1/geoip2.js' | script_tag }}
+  {{ "//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js" | script_tag }}
+  <style>
+  .cart-shipping-header {
+    font-size: 2.4rem;
+    margin-bottom: 1.2rem;
+  }
+  .cart-shipping {
+      padding-top: 1.2rem;
+      margin-top: 1.2rem;
+  }
+  .cart-shipping-rates-container {
+      border-bottom: 1px solid {{ settings.shipping_calculator_border_color }};
+      margin-bottom: 1rem;
+  }
+  .cart-shipping-rates {} .cart-shipping-rates li {
+      margin-bottom: 1rem;
+      list-style-type: none;
+  }
+  .cart-shipping-rates label {
+      position: relative;
+  }
+  .cart-shipping-rates input {
+      position: absolute;
+      top: 1px;
+      left: 0;
+  }
+  .cart-shipping-rates input + .label-text {
+      display: block;
+      padding-left: 25px;
+  }
+  .cart-shipping-rates .radio-label {
+      cursor: pointer;
+      text-align: left;
+  }
+  .cart-shipping-results {
+      padding-bottom: 1.8rem;
+  }
+  .cart-shipping-results .results-text {
+      font-size: 16px;
+  }
+  .cart-shipping-results .results-text strong {
+      font-weight: normal !important
+  }
+  .cart-submit {
+      padding: 10px 20px;
+  }
+  .cart-shipping-rate-name {
+      text-transform: uppercase;
+  }
+  .delivery-estimate {
+      display: block;
+      clear: both;
+  }
+  button.cart-submit {
+      clear: both;
+      display: block;
+      margin-top: 20px;
+      background-color: #fff;
+      border-color: #ccc
+  }
+  .sk-circle {
+      margin: 100px auto;
+      width: 40px;
+      height: 40px;
+      position: relative
+  }
+  .sk-circle .sk-child {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0
+  }
+  .sk-circle .sk-child:before {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      width: 15%;
+      height: 15%;
+      background-color: #333;
+      border-radius: 100%;
+      -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+      animation: sk-circleBounceDelay 1.2s infinite ease-in-out both
+  }
+  .sk-circle .sk-circle2 {
+      -webkit-transform: rotate(30deg);
+      -ms-transform: rotate(30deg);
+      transform: rotate(30deg)
+  }
+  .sk-circle .sk-circle3 {
+      -webkit-transform: rotate(60deg);
+      -ms-transform: rotate(60deg);
+      transform: rotate(60deg)
+  }
+  .sk-circle .sk-circle4 {
+      -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg)
+  }
+  .sk-circle .sk-circle5 {
+      -webkit-transform: rotate(120deg);
+      -ms-transform: rotate(120deg);
+      transform: rotate(120deg)
+  }
+  .sk-circle .sk-circle6 {
+      -webkit-transform: rotate(150deg);
+      -ms-transform: rotate(150deg);
+      transform: rotate(150deg)
+  }
+  .sk-circle .sk-circle7 {
+      -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      transform: rotate(180deg)
+  }
+  .sk-circle .sk-circle8 {
+      -webkit-transform: rotate(210deg);
+      -ms-transform: rotate(210deg);
+      transform: rotate(210deg)
+  }
+  .sk-circle .sk-circle9 {
+      -webkit-transform: rotate(240deg);
+      -ms-transform: rotate(240deg);
+      transform: rotate(240deg)
+  }
+  .sk-circle .sk-circle10 {
+      -webkit-transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
+      transform: rotate(270deg)
+  }
+  .sk-circle .sk-circle11 {
+      -webkit-transform: rotate(300deg);
+      -ms-transform: rotate(300deg);
+      transform: rotate(300deg)
+  }
+  .sk-circle .sk-circle12 {
+      -webkit-transform: rotate(330deg);
+      -ms-transform: rotate(330deg);
+      transform: rotate(330deg)
+  }
+  .sk-circle .sk-circle2:before {
+      -webkit-animation-delay: -1.1s;
+      animation-delay: -1.1s
+  }
+  .sk-circle .sk-circle3:before {
+      -webkit-animation-delay: -1s;
+      animation-delay: -1s
+  }
+  .sk-circle .sk-circle4:before {
+      -webkit-animation-delay: -.9s;
+      animation-delay: -.9s
+  }
+  .sk-circle .sk-circle5:before {
+      -webkit-animation-delay: -.8s;
+      animation-delay: -.8s
+  }
+  .sk-circle .sk-circle6:before {
+      -webkit-animation-delay: -.7s;
+      animation-delay: -.7s
+  }
+  .sk-circle .sk-circle7:before {
+      -webkit-animation-delay: -.6s;
+      animation-delay: -.6s
+  }
+  .sk-circle .sk-circle8:before {
+      -webkit-animation-delay: -.5s;
+      animation-delay: -.5s
+  }
+  .sk-circle .sk-circle9:before {
+      -webkit-animation-delay: -.4s;
+      animation-delay: -.4s
+  }
+  .sk-circle .sk-circle10:before {
+      -webkit-animation-delay: -.3s;
+      animation-delay: -.3s
+  }
+  .sk-circle .sk-circle11:before {
+      -webkit-animation-delay: -.2s;
+      animation-delay: -.2s
+  }
+  .sk-circle .sk-circle12:before {
+      -webkit-animation-delay: -.1s;
+      animation-delay: -.1s
+  }
+  @-webkit-keyframes sk-circleBounceDelay {
+      0%, 100%, 80% {
+          -webkit-transform: scale(0);
+          transform: scale(0)
+      }
+      40% {
+          -webkit-transform: scale(1);
+          transform: scale(1)
+      }
+  }
+  @keyframes sk-circleBounceDelay {
+      0%, 100%, 80% {
+          -webkit-transform: scale(0);
+          transform: scale(0)
+      }
+      40% {
+          -webkit-transform: scale(1);
+          transform: scale(1)
+      }
+  }
+  </style>
+<script>
+if( typeof Countries==="object"){Countries["updateProvinceLabel"]=function(country,provinceLabelElement){if( typeof country==="string"&&Countries[country]&&Countries[country]["provinces"]){if( typeof provinceLabelElement!=="object"){provinceLabelElement=document["getElementById"]("address_province_label");if(provinceLabelElement===null){return };};provinceLabelElement["innerHTML"]=Countries[country]["label"];var provinceContainer=$(provinceLabelElement)["parent"]();var provinceSelect=provinceContainer["find"]("select");provinceContainer["find"](".custom-style-select-box-inner")["html"](Countries[country]["provinces"][0]);}}};
+if( typeof Shopify["Cart"]==="undefined"){Shopify["Cart"]={}};if( typeof Shopify["ShippingAddress"]==="undefined"){Shopify["shippingAddress"]={}};
+Shopify.Cart.ShippingCalculator = (function () {
+Liquid["registerFilters"]({money:function(input){return _formatRate(input)},strip:function(input){return input["trim"]()}});var _config={};var container=$("#shipping-calculator");var results_container=$("#shipping-results");var results_template=$("#shipping-results-template");var form_container=$("#shipping-form");var cart_summary=$("#shipping-calculator-summary");var initial_page_load=true;var did_geolocate=false;var _render=function(data){if(results_template["length"]&&results_container["length"]){var src=Liquid["parse"](results_template["html"]());var compiled=src["render"](data);results_container["html"](compiled);}}; var _getCartShippingRatesForDestination = function () { var data={};data["province"]=Shopify["shippingAddress"]["state"]["name"];data["country"]=Shopify["shippingAddress"]["country"]["code"];data["zip"]=Shopify["shippingAddress"]["postal"]; var params = { type: 'GET', url: '/cart/shipping_rates.json', data: $.param({'shipping_address': data}), dataType: 'json', success: function (response) { Shopify.availableShippingRates = response.shipping_rates; form_container.hide(); results_container.html("{{ settings.shipping_calculator_text_while_calculating }}"); _onCartShippingRatesUpdate(); }, error:function(XMLHttpRequest,textStatus){_onError(XMLHttpRequest,textStatus);_showCalculator(true);initial_page_load=false;} }; $.ajax(params); }; var _fullMessagesFromErrors=function(errors){var fullMessages=[];$["each"](errors,function(attribute,messages){$["each"](messages,function(index,message){fullMessages["push"](attribute+" "+message)})});return fullMessages;}; var _onError = function (XMLHttpRequest, textStatus) { var feedback="";var data=eval("("+XMLHttpRequest["responseText"]+")");if(!!data["message"]){feedback=data["message"]+"("+data["status"]+"): "+data["description"]}else {feedback="Oops: "+_fullMessagesFromErrors(data)["join"]("; ")}; if ( feedback === 'Oops: country is not supported' ) { feedback = _replaceLocationPlaceholders('{{ settings.shipping_calculator_unsupported_location }}');} else if ( feedback === "Oops: country can't be blank" ) { if (did_geolocate) { feedback = _replaceLocationPlaceholders('{{ settings.shipping_calculator_unsupported_location }}'); } } _render({ available_rates: [], error_feedback: feedback, success: false }); results_container.show(); };
+var _getDeliveryEstimate = function (rate) { var cutoff = moment(moment().format("YYYY-MM-DD") + "T" + _config.cutoffTime + "{{settings.shipping_calculator_timezone_offset}}"); var passed_cutoff = false; var shipping_days = parseInt(rate.name.split("-")[1].split(" ")[0]); var now=moment();if(now["diff"](cutoff)>0){passed_cutoff=true;cutoff=cutoff["add"](1,"days");shipping_days+=1;};while(is_unshippable_date(cutoff)){cutoff=cutoff["add"](1,"days");shipping_days+=1;};_["times"](shipping_days,function(num){var date=moment()["add"](1,"days")["add"](num,"days");if(is_holiday(date)){};}); rate.delivery_estimate = "{{ settings.shipping_calculator_order_cutoff_message }}".replace('[date]', delivery_date().format("{{ settings.shipping_calculator_estimate_time_format }}")).replace('[cutoff]', time_to_order()); rate.despatch_date = delivery_date().format("{{ settings.shipping_calculator_estimate_time_format }}"); function time_to_order(){if(cutoff["fromNow"]()["match"](/day/)){return cutoff["diff"](moment(),"hours")+" hours"}else {return cutoff["fromNow"]()["replace"](/(a|an)\s(hour|minute)/,"$2")["split"](" ")["reverse"]()["join"](" ")["replace"](/in/,"")["split"](" ")["reverse"]()["join"](" ")}} function delivery_date(){return moment()["add"](shipping_days,"days")}function is_holiday(date){return _["find"](observed_holidays(),function(holiday){return holiday["format"]("dddd MMM Do")==date["format"]("dddd MMM Do")})} function is_unshippable_date(date) { if (is_holiday(date)) { return true; } var is_sunday_shippable = {{ settings.shipping_calculator_ship_on_sunday }}; var is_monday_shippable = {{ settings.shipping_calculator_ship_on_monday }}; var is_tuesday_shippable = {{ settings.shipping_calculator_ship_on_tuesday }}; var is_wednesday_shippable = {{ settings.shipping_calculator_ship_on_wednesday }}; var is_thursday_shippable = {{ settings.shipping_calculator_ship_on_thursday }}; var is_friday_shippable = {{ settings.shipping_calculator_ship_on_friday }}; var is_saturday_shippable = {{ settings.shipping_calculator_ship_on_saturday }}; var day=date["format"]("dddd");if(is_sunday_shippable&&day=="Sunday"){return false};if(is_monday_shippable&&day=="Monday"){return false};if(is_tuesday_shippable&&day=="Tuesday"){return false};if(is_wednesday_shippable&&day=="Wednesday"){return false};if(is_thursday_shippable&&day=="Thursday"){return false};if(is_friday_shippable&&day=="Friday"){return false};if(is_saturday_shippable&&day=="Saturday"){return false};return true; } function observed_holidays(){var holidays=_config["holidays"];return _["map"](holidays,function(holiday){return moment(holiday)});} };
+var _onCartShippingRatesUpdate = function () { _updateCartSummary(Shopify["availableShippingRates"]["length"]>0?Shopify["availableShippingRates"][0]["price"]:null);_["each"](Shopify["availableShippingRates"],function(rate){if(rate["name"]["match"](/\d-\d+/)){_getDeliveryEstimate(rate)}}); _.each(Shopify.availableShippingRates, function(rate, index) { Shopify.availableShippingRates[index].formatted_rate = _replaceRateFormatPlaceholders("{{ settings.shipping_rate_format }}", rate); }); Shopify["lowestAvailablePrice"]=999999;_["each"](Shopify["availableShippingRates"],function(rate){if(rate["price"]<Shopify["lowestAvailablePrice"]){Shopify["lowestAvailablePrice"]=_formatRate(rate["price"])}});_render({address:Shopify["shippingAddress"]||false,available_rates:Shopify["availableShippingRates"],success:true,stateside:_stateside(),location:location,messages:_messages()});results_container["fadeIn"]("fast"); };
+var _replaceRateFormatPlaceholders=function(rate_string,rate){var replaced_string=rate_string["replace"]("[name]",rate["name"])["replace"]("[price]",rate["price"]);return replaced_string;};var _replaceRatePlaceholders=function(rate_string){var replaced_string=rate_string["replace"]("[lowest rate]",Shopify["lowestAvailablePrice"]);return replaced_string;};var _replaceLocationPlaceholders=function(location_string){if(did_geolocate){var replaced_string=location_string;if(Shopify["shippingAddress"]["city_string"]===undefined){replaced_string=replaced_string["replace"]("[city]",Shopify["shippingAddress"]["state"]["name_string"]+" ("+Shopify["shippingAddress"]["postal"]+")")};replaced_string=replaced_string["replace"]("[state code]",Shopify["shippingAddress"]["state"]["code"])["replace"]("[state name]",Shopify["shippingAddress"]["state"]["name_string"])["replace"]("[city]",Shopify["shippingAddress"]["city_string"])["replace"]("[country code]",Shopify["shippingAddress"]["country"]["code"])["replace"]("[country name]",Shopify["shippingAddress"]["country"]["name_string"])["replace"]("[postal code]",Shopify["shippingAddress"]["postal"]);return replaced_string;}else {return location_string["replace"]("[state code]",Shopify["shippingAddress"]["state"]["name_string"])["replace"]("[state name]",Shopify["shippingAddress"]["state"]["name_string"])["replace"]("[city]",Shopify["shippingAddress"]["state"]["name_string"]+" ("+Shopify["shippingAddress"]["postal"]+")")["replace"]("[country code]",Shopify["shippingAddress"]["country"]["name_string"])["replace"]("[country name]",Shopify["shippingAddress"]["country"]["name_string"])["replace"]("[postal code]",Shopify["shippingAddress"]["postal"])}};var _replacePlaceholders=function(placeholder_string){var replaced_string=_replaceRatePlaceholders(placeholder_string);replaced_string=_replaceLocationPlaceholders(replaced_string);return replaced_string;};
+var _messages = function() { var messages = {};messages.wrong_location = _replacePlaceholders('{{ settings.shipping_calculator_wrong_location_text }}');messages.no_rates_found = '{{ settings.shipping_calculator_no_shipping_rates_found }}';messages.title = _replacePlaceholders('{{ settings.shipping_calculator_results_header }}');messages.try_different  = '{{ settings.shipping_calculator_try_again }}';messages.free_label = '{{ settings.shipping_calculator_free_shipping_text }}';messages.additional_success_note = '{{ settings.shipping_calculator_additional_results_message_text }}';return messages; };
+var _stateside = function () {return Shopify.shippingAddress.country.code == "US" || Shopify.shippingAddress.country.name == "United States";};
+var _updateCartSummary = function (shipping_rate) { var subtotal=parseInt(cart_summary["find"]("[data-cart-subtotal]")["attr"]("data-cart-subtotal"));var cart_total=$("[data-cart-total]");var cart_shipping=cart_summary["find"]("[data-cart-shipping]");if(shipping_rate==null){cart_shipping["html"]("&ndash;");cart_total["html"](_formatRate(subtotal));return ;};var shipping_rate=( typeof shipping_rate=="string")?parseInt(shipping_rate["replace"](".","")):shipping_rate;var new_total=_formatRate(subtotal+shipping_rate);
+if ( shipping_rate == 0 ) { cart_shipping.html("{{ settings.shipping_calculator_free_shipping_text }}");cart_total.html(_formatRate(subtotal));} else {cart_total.html(new_total);cart_shipping.html(_formatRate(shipping_rate));}};
+var _formatRate = function (cents) {
+if (typeof cents == 'string') cents = cents.replace('.','');var value = '';var patt = /\{\{\s*(\w+)\s*\}\}/;var formatString = "${% raw %}{{amount}}{% endraw %}";
+function addCommas(moneyString){return moneyString["replace"](/(\d+)(\d{3}[\.,]?)/,"$1,$2")}function floatToString(numeric,decimals){var amount=numeric["toFixed"](decimals).toString();if(amount["match"](/^\.\d+/)){return "0"+amount}else {return amount};}switch(formatString["match"](patt)[1]){case "amount":value=addCommas(floatToString(cents/100.0,2));break ;;case "amount_no_decimals":value=addCommas(floatToString(cents/100.0,0));break ;;case "amount_with_comma_separator":value=floatToString(cents/100.0,2)["replace"](/\./,",");break ;;case "amount_no_decimals_with_comma_separator":value=addCommas(floatToString(cents/100.0,0))["replace"](/\./,",");break ;;};return formatString["replace"](patt,value);
+};
+var _getShippingAddress = function () { var defer = $.Deferred(); Shopify.shippingAddress.province = Shopify.shippingAddress.state = {}; Shopify.shippingAddress.country = {}; if ( _config.useCustomerAddress ) { did_geolocate = false; Shopify.shippingAddress.city = '{{ customer.default_address.city }}'; Shopify.shippingAddress.city_string = Shopify.shippingAddress.city; Shopify.shippingAddress.province.code = '{{ customer.default_address.province_code }}'; Shopify.shippingAddress.province.name = '{{ customer.default_address.province }}'; Shopify.shippingAddress.province.name_string = Shopify.shippingAddress.province.name; Shopify.shippingAddress.country.code = '{{ customer.default_address.country_code }}'; Shopify.shippingAddress.country.name = '{{ customer.default_address.country }}'; Shopify.shippingAddress.country.name_string = Shopify.shippingAddress.country.name; Shopify.shippingAddress.postal = '{{ customer.default_address.zip }}'; Shopify.shippingAddress.state = Shopify.shippingAddress.province; defer.resolve(); } else {did_geolocate = true; geoip2.city(function(response){var lang_code = '{{ settings.shipping_calculator_language }}';Shopify["shippingAddress"]["city"]=response["city"]["names"]["en"];Shopify["shippingAddress"]["city_string"]=response["city"]["names"][lang_code]===undefined?response["city"]["names"]["en"]:response["city"]["names"][lang_code];Shopify["shippingAddress"]["province"]["code"]=response["subdivisions"][0]["iso_code"];Shopify["shippingAddress"]["province"]["name"]=response["subdivisions"][0]["names"]["en"];Shopify["shippingAddress"]["province"]["name_string"]=response["subdivisions"][0]["names"][lang_code]===undefined?response["subdivisions"][0]["names"]["en"]:response["subdivisions"][0]["names"][lang_code];Shopify["shippingAddress"]["country"]["code"]=response["country"]["iso_code"];Shopify["shippingAddress"]["country"]["name"]=response["country"]["names"]["en"];Shopify["shippingAddress"]["country"]["name_string"]=response["country"]["names"][lang_code]===undefined?response["country"]["names"]["en"]:response["country"]["names"][lang_code];Shopify["shippingAddress"]["postal"]=response["postal"]["code"];Shopify["shippingAddress"]["state"]=Shopify["shippingAddress"]["province"];defer["resolve"](); }); } return defer; };
+var _getShippingAddressFromCalculator=function(){Shopify["shippingAddress"]["postal"]=$("#address_zip")["val"]()||"";Shopify["shippingAddress"]["country"]["code"]=$("#address_country")["val"]()||"";Shopify["shippingAddress"]["country"]["name"]=$("#address_country")["val"]()||"";Shopify["shippingAddress"]["country"]["name_string"]=Shopify["shippingAddress"]["country"]["name"];Shopify["shippingAddress"]["province"]["code"]=$("#address_province")["val"]()||"";Shopify["shippingAddress"]["province"]["name"]=$("#address_province")["val"]()||"";Shopify["shippingAddress"]["province"]["name_string"]=Shopify["shippingAddress"]["province"]["name"];Shopify["shippingAddress"]["state"]=Shopify["shippingAddress"]["province"];Shopify["shippingAddress"]["city"]="";Shopify["shippingAddress"]["city_string"]=Shopify["shippingAddress"]["city"];did_geolocate=false;};
+var _events=function(){ new Shopify.CountryProvinceSelector("address_country","address_province",{hideElement:"address_province_container"});var countriesSelect=$("#address_country");var addressProvinceLabelEl=$("#address_province_label")["get"](0);if( typeof Countries!=="undefined"){Countries["updateProvinceLabel"](countriesSelect["val"](),addressProvinceLabelEl);countriesSelect["change"](function(){Countries["updateProvinceLabel"](countriesSelect["val"](),addressProvinceLabelEl)});};container["on"]("click","[data-get-rates]",function(e){e["preventDefault"]();_getShippingAddressFromCalculator();_getCartShippingRatesForDestination();});container["on"]("click","[data-show-calculator]",function(e){e["preventDefault"]();_showCalculator();});container["on"]("change","[data-shipping-rates] input[type=radio]",function(e){_updateCartSummary($(this)["val"]())});};
+var _showCalculator = function (error) { error = typeof error !== 'undefined' ? error : false; if (error == false) { results_container.empty().hide(); } form_container.fadeIn("fast"); };
+var _init = function () { $.when( _getShippingAddress() ).done(function () { if ( {{ settings.shipping_calculator_use_geolocation }} == false ) { _showCalculator(); } else { _getCartShippingRatesForDestination(); }}).fail(_showCalculator); _events(); };
+return {show:function(options){$["extend"](_config,options||{});$(function(){_init()});},getConfig:function(){return _config},formatRate:function(cents){return _formatRate(cents)}};
+})();
+Shopify.Cart.ShippingCalculator.show({ moneyFormat: {{ shop.money_with_currency_format | json }}, useCustomerAddress: {{ use_customer_address }} ,cutoffTime: {{ settings.shipping_calculator_cutoff_time | json }}, holidays: {{ holidays }}
+});
+</script>
+</div>

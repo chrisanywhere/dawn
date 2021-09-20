@@ -1,0 +1,21 @@
+{% include 'collection-variables' %}
+{% capture door %}{% if collection.handle == doors %} door{% endif %}{% endcapture %}
+
+<div class="container">
+	{% unless current_tags != nil %}
+		{% if collection.handle == wardrobes %}
+			{% include 'collection-wardrobes' %}
+		{% endif %}
+		{% if collection.handle == doors %}
+			{% include 'collection-doors' %}
+		{% endif %}
+	{% endunless %}
+
+	{% if current_tags.size == 1 %}
+	    {% include 'collection-product-widths' %}
+	{% endif %}
+
+	{% if current_tags.size == 2 %}
+	    {% include 'collection-product-listing' %}
+	{% endif %}
+</div>

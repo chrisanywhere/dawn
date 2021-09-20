@@ -1,0 +1,40 @@
+<div class="container">
+	<header>
+		<div class="page-header">
+			{% include 'global-icons-share' %}
+			<h1>{{ page_title }}</h1>
+		</div>
+	</header>
+
+	<div class="row">
+		<div class="col-sm-9">
+			{% paginate blog.articles by 10 %}
+
+				{% include 'pagination' %}
+
+				{% for article in blog.articles %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ article.title }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            {{ article.content }}
+
+                            {% comment %}
+                            <p><small>Question added on {{ article.published_at | date: "%d %B %Y" }}.</small></p>
+                            {% endcomment %}
+                        </div>
+                    </div>
+				{% endfor %}
+
+				{% include 'pagination' %}
+
+			{% endpaginate %}
+		</div>
+
+		<div class="col-sm-3 hidden-xs">
+			{% include 'global-icons-trust' %}
+		</div>
+
+	</div>
+</div>

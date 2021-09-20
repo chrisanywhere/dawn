@@ -1,0 +1,281 @@
+<div class="container">
+	<header>
+		<div class="page-header">
+			{% include 'global-icons-share' %}
+			<h1>Delivery Quote <small>Australia Wide Delivery</small></h1>
+			<p class="lead">Please complete this form if your delivery address falls within the POA post codes listed on our <a href="/pages/delivery">delivery page</a>.</p>
+		</div>
+	</header>
+
+	{% form 'contact' %}
+	{% if form.posted_successfully? %}
+	<div class="alert alert-success">
+		<p><b><span class="icon icon-check"></span>&nbsp;Thanks for contacting us!</b> We have received your enquiry and we will be in touch as soon as possible.</p>
+	</div>
+	{% endif %}
+
+	{% if form.errors %}
+	<div class="alert alert-danger">
+		<p><b><span class="icon icon-exclamation-triangle"></span>&nbsp;Oops, sorry.</b> We were unable to submit your inquiry because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the following and send again:</p>
+		<ul>
+		{% for field in form.errors %}
+		<li>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</li>
+		{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+
+	<input type="hidden" id="input_formtype" name="contact[form type]" value="Delivery Quote Form">
+
+	<div class="well">
+
+		<div class="form-horizontal">
+
+			<h3>Your Details <small>all fields required</small></h3>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+					    <label for="input_name" class="col-md-5 control-label">Your name</label>
+					    <div class="col-md-7">
+							<input type="text" class="form-control" id="input_name" name="contact[name]">
+					    </div>
+					</div>
+					
+					<div class="form-group">
+					    <label for="input_email" class="col-md-5 control-label">Your E-mail</label>
+					    <div class="col-md-7">
+							<input type="email" class="form-control form-textbox" id="input_email" name="contact[email]">
+					    </div>
+					</div>
+
+					<div class="form-group">
+						<label for="input_phone" class="col-md-5 control-label">Phone Number</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control form-textbox" id="input_phone" name="contact[phone]">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+
+					<div class="form-group">
+						<label for="input_address" class="col-md-5 control-label">Delivery Address</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control form-textbox" id="input_address" name="contact[address]">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="input_suburb" class="col-md-5 control-label">Suburb</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control form-textbox" id="input_suburb" name="contact[suburb]">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="input_state" class="col-md-5 control-label">State</label>
+						<div class="col-md-7">
+							<select class="form-control" id="input_state" name="contact[state]">
+								<option>Queensland</option>
+								<option>New South Wales</option>
+								<option>Australian Capital Territory</option>
+								<option>Victoria</option>
+								<option>Tasmania</option>
+								<option>Northern Territory</option>
+								<option>South Australia</option>
+								<option>Western Australia</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="input_postcode" class="col-md-5 control-label">Postcode</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control form-textbox" id="input_postcode" name="contact[postcode]">
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<hr>
+
+			<h3>Your Doors <small>all fields required</small></h3>
+			<p><span class="label label-primary">Important:</span> Please provide the <b>overall</b> dimensions of your wardrobe door opening (you do not need to worry about individual doors sizes). Read the <a href="/pages/support">how to measure</a> guide for more details.</p>
+
+			<hr>
+			
+			<h4>Wardrobe Door Opening 1</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_height1" class="col-md-6 control-label">Opening Height <small>(mm)</small></label>
+						<div class="col-md-6">
+							<input type="text" class="form-control form-textbox" id="input_height1" name="contact[opening 1 height]">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_width1" class="col-md-6 control-label">Opening Width <small>(mm)</small></label>
+						<div class="col-md-6">
+							<input type="text" class="form-control form-textbox" id="input_width1" name="contact[opening 1 width]">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_style1" class="col-md-5 control-label">Door Style</label>
+						<div class="col-md-7">
+							<select class="form-control" id="input_style1" name="contact[opening 1 style]">
+								<option>Raw Gyprock</option>
+								<option>Vinyl</option>
+								<option>Framed Mirror</option>
+								<option>Colonial Style</option>
+								<option>Frameless Mirror</option>
+								<option>Painted Glass</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+
+			<h4>Wardrobe Door Opening 2</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_height2" class="col-md-6 control-label">Opening Height <small>(mm)</small></label>
+						<div class="col-md-6">
+							<input type="text" class="form-control form-textbox" id="input_height2" name="contact[opening 2 height]">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_width2" class="col-md-6 control-label">Opening Width <small>(mm)</small></label>
+						<div class="col-md-6">
+							<input type="text" class="form-control form-textbox" id="input_width2" name="contact[opening 2 width]">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_style2" class="col-md-5 control-label">Door Style</label>
+						<div class="col-md-7">
+							<select class="form-control" id="input_style2" name="contact[opening 2 style]">
+								<option>Raw Gyprock</option>
+								<option>Vinyl</option>
+								<option>Framed Mirror</option>
+								<option>Colonial Style</option>
+								<option>Frameless Mirror</option>
+								<option>Painted Glass</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+
+			<h4>Wardrobe Door Opening 3</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_height3" class="col-md-6 control-label">Opening Height <small>(mm)</small></label>
+						<div class="col-md-6">
+							<input type="text" class="form-control form-textbox" id="input_height3" name="contact[opening 3 height]">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_width3" class="col-md-6 control-label">Opening Width <small>(mm)</small></label>
+						<div class="col-md-6">
+							<input type="text" class="form-control form-textbox" id="input_width3" name="contact[opening 3 width]">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_style3" class="col-md-5 control-label">Door Style</label>
+						<div class="col-md-7">
+							<select class="form-control" id="input_style3" name="contact[opening 3 style]">
+								<option>Raw Gyprock</option>
+								<option>Vinyl</option>
+								<option>Framed Mirror</option>
+								<option>Colonial Style</option>
+								<option>Frameless Mirror</option>
+								<option>Painted Glass</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+
+			<h4>Wardrobe Door Opening 4</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_height4" class="col-md-6 control-label">Opening Height <small>(mm)</small></label>
+						<div class="col-md-6">
+							<input type="text" class="form-control form-textbox" id="input_height4" name="contact[opening 4 height]">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_width4" class="col-md-6 control-label">Opening Width <small>(mm)</small></label>
+						<div class="col-md-6">
+							<input type="text" class="form-control form-textbox" id="input_width4" name="contact[opening 4 width]">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input_style4" class="col-md-5 control-label">Door Style</label>
+						<div class="col-md-7">
+							<select class="form-control" id="input_style4" name="contact[opening 4 style]">
+								<option>Raw Gyprock</option>
+								<option>Vinyl</option>
+								<option>Framed Mirror</option>
+								<option>Colonial Style</option>
+								<option>Frameless Mirror</option>
+								<option>Painted Glass</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="form-group">
+				<label for="input_body" class="col-md-3 control-label">Additional Comments</label>
+				<div class="col-md-7">
+					<textarea id="input_body" class="form-control form-textarea" name="contact[body]" rows="5"></textarea>
+				</div>
+			</div>
+			  
+			<div class="form-group">
+				<div class="col-md-offset-3 col-md-4">
+				    <button type="submit" class="btn btn-primary">Send Enquiry</button>
+				</div>
+			</div>
+
+		</div>
+		{% endform %}
+	</div>
+
+</div>

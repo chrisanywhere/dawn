@@ -1,0 +1,43 @@
+<div class="container">
+	<header>
+		<div class="page-header">
+			{% include 'global-icons-share' %}
+			<h1>{% include 'smart-title' %}</h1>
+		</div>
+	</header>
+
+	<div class="row">
+		<div class="span6 offset3">
+			<!-- Search form -->
+			<form class="form-search" action="/search" method="get">
+				<div class="input-append">
+					<input type="text" name="q" value="{{search.terms  | escape}}" id="result-q" class="span5 search-query">
+					<button type="submit" class="btn">Search</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	{% if search.performed %}
+		{% paginate search.results by 10 %}
+			{% if search.results == empty %}  
+			<p>Your search for "{{search.terms | escape}}" did not yield any results</p>              
+		{% else %}
+			{% for i in search.results %}
+				<h4><strong>{{ i.title | link_to: i.url }}</strong></h4>
+				<div class="media">
+					{% if i.featured_image %}
+						<a href="{{i.url}}" class="pull-left"><img src="{{ i.featured_image | product_img_url: 'thumbnail' }}" class="media-object thumbnail"></a>
+					{% endif %}
+					<div class="media-body">
+						<p>{{ i.content | strip_html | truncatewords: 40 | highlight: search.terms }} <a href="{{ i.url }}">Read More</a></p>
+					</div>
+				</div>
+				<hr>
+			{% endfor %}
+		{% endif %}
+
+		{% include 'pagination' %}
+		{% endpaginate %}
+	{% endif %}
+</div>

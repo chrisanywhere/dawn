@@ -1,0 +1,76 @@
+{% comment %}
+  When a comment is submitted, the browser is redirected to a page that includes 
+  the new comment id in its URL.
+  #comments is a required ID and is used as an anchor link by Shopify.
+{% endcomment %}
+
+{%- assign number_of_comments = article.comments_count -%}
+
+{% comment %}
+  If a comment was just submitted but requires moderation, we have an extra comment to count.
+{% endcomment %}
+{% if comment and comment.status != 'published' %}
+  {% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+<div class="container">
+
+  {% include 'blog-back' %}
+
+  <article role="article" itemscope itemtype="http://schema.org/Article">
+
+    <header role="banner">
+      <div class="page-header">
+        {% include 'global-icons-share' %}
+        <h1>{{ article.title }}</h1>
+        {% include 'blog-author' %}
+      </div>
+    </header>
+
+    <div class="row">
+      <div class="col-sm-9">
+
+        {% if article.image %}
+          <a href="{{ article.url }}">
+            <img src="{{ article.image.src | img_url: '400x400' }}" alt="" class="img-responsive center-block img-thumbnail">
+          </a>
+        {% endif %}
+
+        <div class="rte" itemprop="articleBody">
+          {{ article.content }}
+        </div>
+
+        <hr>
+
+        {% if blog.comments_enabled? %}
+          {% include 'blog-comments' %}
+        {% endif %}
+
+        <hr>
+
+      </div>
+
+      <div class="hidden-xs col-sm-3">
+        <h4><small>Tags</small></h4>
+        {% include 'blog-tags', class: 'list-unstyled' %}
+
+        <hr>
+
+        <h4><small>Share this article</small></h4>
+			  {% include 'blog-icons-share', class: 'list-unstyled', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+		  </div>
+
+    </div>
+  </article>
+
+  {% include 'blog-back' %}
+
+</div>
+
+<script>
+  $(function() {
+    $('.rte img').not('a > img').each(function() {
+      $(this).addClass('img-responsive center-block img-thumbnail')
+    });
+  });
+</script>

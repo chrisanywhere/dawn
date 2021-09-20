@@ -1,0 +1,57 @@
+<div class="well prod-buy" itemprop="offers" itemscope itemtype="//schema.org/Offer">
+<meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+<meta itemprop="price" content="{{ product.price | money }}" />
+<link itemprop="availability" href="//schema.org/InStock" />
+
+  <div class="lead">
+    <h4><span id="price-field"></span>&nbsp;<small>(incl GST)</small></h4>
+    <span id="sale-field" class="label label-success">On Sale</span>
+    <del id="compare-at-price-field" class="muted"></del>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6 pull-right">
+      <div class="form-group">
+        <label class="inline" for="quantity">Qty</label>
+        <input class="form-control" min="1" type="number" id="quantity" name="quantity" value="1">
+      </div>
+    </div>
+  </div>
+
+  {% include 'product-options' %}
+
+  <div class="row">
+    <div class="col-md-8 pull-right">
+      <div class="form-group">
+        <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
+          <select id="product-select" name="id" class="hidden">
+            {% for variant in product.variants %}
+            <option value="{{ variant.id }}">{{ variant.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <input type="submit" name="add" value="Add to cart" id="purchase" class="btn" />
+    </div>
+  </div>
+  
+  <hr>
+
+  <p class="text-right"><span class="icon icon-truck"></span>&nbsp;<strong>Delivery Options for </strong>&nbsp;<span class="label label-info">4370</span></p>
+  <ol>
+    <li>Pick up from our workshop at $0.00 AUD</li>
+    <li>Delivery to your address at $193.26 AUD</li>
+  </ol>
+  <p>Get it by Friday June 19th if ordered today.</p>
+
+  <p class="text-right"><a href="#delivery" title="Delivery Information">Not in 4370?</a></p>
+
+
+</div>

@@ -1,0 +1,13 @@
+{% assign photogallery = all_products['photos'] %}
+<div class="row thumbnails">
+    {% for image in photogallery.images limit: 6 %}
+    <div class="col-md-4">
+        <a data-fancybox="instafeedGallery" rel="gallery" href="{{ image | img_url: 'grande' }}" title="{{ image.alt | escape }}" data-caption="{{ image.alt | escape }}">
+            <img src="{{ image | img_url: '300x300', crop: 'center' }}" class="img-responsive thumbnail center-block" alt="{{ image.alt | escape }}" />
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<p class="text-right">
+    <a href="/products/photos">see all photos &raquo;</a>
+</p>

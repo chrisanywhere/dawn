@@ -1,0 +1,32 @@
+<div>
+	<h3>Order Summary</h3>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<ul>
+				<li>Door 1, price, photo, style, colours, etc</li>
+				<li>Door 2, price, photo, style, colours, etc</li>
+			</ul>
+			<!-- price -->
+			<p>Total: $<span id="doorTotalPrice">0.00</span><sup class="text-muted">&#42;</sup></p>
+		</div>
+	</div>
+	<p class="text-muted"><em>&#42; includes GST. Delivery calculated during checkout.</em></p>
+</div>
+
+<form id="addToCartForm">
+	<button id="addToCart" type="submit" class="btn btn-primary">Place Order</button>
+</form>
+
+<hr>
+
+<p>Estimated delivery: 9 Days</p>
+
+{% comment %}cart modal popup{% endcomment %}
+{% assign modal-id = 'addToCartModal' %}
+{% assign modal-label = 'addToCartLabel' %}
+{% assign modal-title = 'Add To Cart Title' %}
+{% capture modal-body %}
+  {% include 'app-add-to-cart' %}
+{% endcapture %}
+{% include 'helper-modal-popup' %}
+{% comment %}end cart popup{% endcomment %}

@@ -1,0 +1,58 @@
+/* --------------------------------------------------
+Responsive
+-------------------------------------------------- */
+
+/* Large devices
+------------------------- */
+@media (min-width: 992px) {
+  .jumbotron h1 {font-size: 45px;}
+  .vertical-center-doors {margin-top:21%;}
+}
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 991px) {
+  .jumbotron h1 {font-size: 45px;}
+  .jumbotron{padding-top:20px;padding-bottom:20px;margin-bottom: 0;}
+}
+
+/* Tablet
+------------------------- */
+@media (max-width: 767px) {
+  body {padding-top: 20px;}
+  /* Downsize the jumbotrons */
+  .jumbotron{padding-top:20px;padding-bottom:20px;margin-bottom: 0;}
+} 
+
+/* Landscape phones
+------------------------- */
+@media (max-width: 480px) {
+
+  /* Change up some type stuff */
+  h2 small,
+  h3 small {
+    display: block;
+  }
+  .lead {font-size: 20px;}
+
+  .jumbotron h1 {
+    font-size: 30px;
+  }
+  .jumbotron p,
+  .jumbotron .btn {
+    font-size: 18px;
+  }
+  .jumbotron .btn {
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Headings */
+  h1{font-size:28px}
+  h2{font-size:24px}
+  h3{font-size: 22px;}
+  h4{font-size:18px;}
+
+  /* fix up sliding wardrobe doors button */
+  .btn-2 {margin-left:0;margin-top:10px;font-size:16px;}
+}

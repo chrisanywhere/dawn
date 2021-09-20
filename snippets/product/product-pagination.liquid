@@ -1,0 +1,10 @@
+{% if collection %}
+<hr>
+<div class="pagination pagination-mini pagination-centered">
+  <ul>
+    <li{% unless collection.previous_product %} class="disabled"{% endunless %}>{{ '&laquo; Previous product' | link_to: collection.previous_product }}</li>
+    <li>{{ collection.title | link_to: collection.url }}</li>
+    <li{% unless collection.next_product %} class="disabled"{% endunless %}>{{ 'Next product &raquo;' | link_to: collection.next_product }}</li>
+  </ul>
+</div>
+{% endif %}

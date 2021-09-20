@@ -1,0 +1,64 @@
+<footer id="globalFooter">
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h4>Products</h4>
+          <ul class="list-unstyled">
+            {% for l in linklists.footer.links %}
+              <li{% if l.active %} class="active"{% endif %}>{{ l.title | link_to: l.url, l.title }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h4>About Us</h4>
+          <ul class="list-unstyled">
+            {% for l in linklists.footer2.links %}
+              <li{% if l.active %} class="active"{% endif %}>{{ l.title | link_to: l.url, l.title }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h4>Support</h4>
+          <ul class="list-unstyled">
+            {% for l in linklists.footer3.links %}
+              <li{% if l.active %} class="active"{% endif %}>{{ l.title | link_to: l.url, l.title }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <div class="footer-form">
+            {% include 'newsletter-signup-form' %}
+          </div>
+          {% assign icon-link-class = '' %}
+          {% assign icon-img-class = 'img-responsive' %}
+          {% include 'global-icons-paypal' %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <p class="navbar-right navbar-text hidden-xs"><a class="navbar-link" href="#"><small>Back to top</small> <span class="icon icon-caret-up"></span></a></p>
+      <div class="navbar-right navbar-text hidden-xs">
+        {% assign icon-list-class = 'navbar-nav list-unstyled list-inline mb0' %}
+        {% assign icon-link-class = 'navbar-link' %}
+        {% assign icon-span-class = 'icon-med' %}
+        {% include 'global-icons-social' %}
+      </div>
+      {% assign icon-link-class = '' %}
+      {% assign icon-img-class = 'img-responsive' %}
+      <div class="icon-footer-shopify navbar-right hidden-xs">{% include 'global-icons-pci' %}</div>
+      {% assign icon-link-class = '' %}
+      {% assign icon-img-class = 'img-responsive' %}
+      {% assign icon-shopify-colour = 'dark' %}
+      <div class="icon-footer-shopify navbar-right hidden-xs">{% include 'global-icons-shopify' %}</div>
+      <div class="pull-left navbar-text">
+        <small class="muted">
+          &copy;&nbsp;{{ 'now' | date: '%Y' }}&nbsp;<strong><a class="navbar-link" href="/" title="{{ shop.name }} - Home">{{ shop.name | replace: ' ', '&nbsp;' }}</a></strong>.
+        </small>
+      </div>
+    </div>
+  </nav>
+</footer>

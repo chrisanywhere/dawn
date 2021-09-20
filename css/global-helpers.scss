@@ -1,0 +1,95 @@
+/* --------------------------------------------------
+Global
+-------------------------------------------------- */
+//body { padding-top: 50px;}
+
+/* --------------------------------------------------
+helper classes
+-------------------------------------------------- */
+	// heights
+	.h100 {height:100%;}
+	.h30px {height:30px;}
+
+	// widths
+	.w100 {width: 100%;}
+	.w96 {width:96%;}
+	.w92 {width:92%;}
+	.w52 {width:52%;}
+	.w50 {width:50%;}
+	.w48 {width:48%;}
+
+	// margins
+	.m0 {margin:0;}
+	.ml10 {margin-left: 10px;}
+	.ml20 {margin-left: 20px;}
+	.mr10 {margin-right:10px;}
+	.mr20 {margin-right: 20px;}
+	.mt10 {margin-top:10px;}
+	.mt20{margin-top:20px;}
+	.mt30 {margin-top:30px;}
+	.mt12{margin-top: 12px;}
+	.mt15{margin-top:15px;}
+	.mb0{margin-bottom: 0;}
+	.mb12{margin-bottom:12px;}
+	.mb30{margin-bottom: 30px;}
+
+	// margins - percentage
+	.mt15p {margin-top:15%;}
+	.mt40p {margin-top:40%;}
+
+	// padding
+	.pr1 {padding-right:1px;}
+	.thumb-padding{padding:40px 0 30px;}
+
+	// fonts
+	.big{font-size:150%;}
+	.small{font-size:75%;}
+	.italic{font-style:italic;}
+	.uppercase{text-transform: uppercase;}
+
+	// positioning & display
+	.relative{position: relative;}
+	.block {display: block;}
+	
+	// colours
+	.white{color:#ffffff;}
+	.dark{color:#333333;}
+	.smgrey{color:#999;}
+	
+	// borders
+	.ba1 {border:1px solid;}
+	.bl1 {border-left: 1px solid;}
+	.br1 {border-right: 1px solid;}
+	.bt1 {border-top: 1px solid;}
+	.bb1 {border-bottom: 1px solid;}
+	.bc555 {border-color: #555;}
+
+	// shadows
+	.boxshadow01 {
+		-webkit-box-shadow: inset -3px 0px 10px 0px rgba(50, 50, 50, 0.75);
+		-moz-box-shadow:    inset -3px 0px 10px 0px rgba(50, 50, 50, 0.75);
+		box-shadow:         inset -3px 0px 10px 0px rgba(50, 50, 50, 0.75);
+	}
+
+	// misc
+	.caret {
+	  display: inline-block;
+	  width: 0;
+	  height: 0;
+	  margin-left: 2px;
+	  vertical-align: middle;
+	  border-top: 4px solid;
+	  border-right: 4px solid transparent;
+	  border-left: 4px solid transparent;
+	}
+	
+	#spinnerOverlay{
+		background:	rgba(0, 0, 0, 0.7);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		display:none;
+		margin:0 auto;
+	}

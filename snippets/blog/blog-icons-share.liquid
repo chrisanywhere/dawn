@@ -1,0 +1,27 @@
+<ul class="{{ class }}">
+
+    <li>
+        <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}">
+        <i class="icon icon-facebook-official"></i>
+        <span aria-hidden="true">Share</span>
+        <span class="sr-only sr-only-focusable">Share on Facebook</span>
+        </a>
+    </li>
+
+    <li>
+        <a target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}">
+        <i class="icon icon-twitter"></i>
+        <span aria-hidden="true">Tweet</span>
+        <span class="sr-only sr-only-focusable">Tweet on Twitter</span>
+        </a>
+    </li>
+
+    <li>
+        <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | img_url: '1024x1024' }}&amp;description={{ share_title | url_param_escape }}">
+        <i class="icon icon-pinterest-square"></i>
+        <span aria-hidden="true">Pin it</span>
+        <span class="sr-only sr-only-focusable">Pin on Pinterest</span>
+        </a>
+    </li>
+
+</ul>

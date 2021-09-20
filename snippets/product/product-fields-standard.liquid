@@ -1,0 +1,72 @@
+<div class="row">
+
+  <div class="col-md-8">
+
+    <h4>Cut to size</h4>
+    <p>Your wardrobe will be custom made to fit your wardrobe opening. Simply fill out all the fields below and click the add to cart button:</p>
+
+    <div class="row">
+
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
+          <label for="backwidth">Back Width (mm)</label>
+          <input type="text" class="form-control required" id="backwidth" name="properties[Back Width]" required data-error="Please fill in this field if you want to proceed.">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 vertical-center-standard">
+        <div class="form-group">
+          <label for="leftdepth">Left Depth (mm)</label>
+          <input type="text" class="form-control required" id="leftdepth" name="properties[Left Depth]" required data-error="Please fill in this field if you want to proceed.">
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <p class="text-center"><img class="img-responsive" src="{{ 'fields-standard-opening.png' | asset_url }}" alt="Standard Wardrobe Opening - Plan View" title="Standard Wardrobe Opening - Plan View" /></p>
+      </div>
+
+      <div class="col-md-3 vertical-center-standard">
+        <div class="form-group">
+          <label for="rightdepth">Right Depth (mm)</label>
+          <input type="text" class="form-control required" id="rightdepth" name="properties[Right Depth]" required data-error="Please fill in this field if you want to proceed.">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="leftreturn">Left Return (mm)</label>
+          <input type="text" class="form-control required" id="leftreturn" name="properties[Left Return]" required data-error="Please fill in this field if you want to proceed.">
+          <span class="help-block">If no returns, please write n/a</span>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
+          <label for="rightreturn">Right Return (mm)</label>
+          <input type="text" class="form-control required" id="rightreturn" name="properties[Right Return]" required data-error="Please fill in this field if you want to proceed.">
+          <span class="help-block">If no returns, please write n/a</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
+          <label for="doorheight">Existing Door Height (mm)</label>
+          <input type="text" class="form-control required" id="doorheight" name="properties[Existing Door Height]" required data-error="Please fill in this field if you want to proceed.">
+          <span class="help-block">If no existing doors, please write n/a</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-4">{% include 'product-add-to-cart' %}</div>
+
+</div>

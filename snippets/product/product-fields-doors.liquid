@@ -1,0 +1,87 @@
+<div class="row">
+
+  <div class="col-md-8">
+
+    <h4>Your door opening measurements:</h4>
+    <p>Your doors will be custom made to fit your wardrobe door opening. We need to know the <a href="/pages/measuring-guide" title="Sliding Wardrobe Doors - Measure Guide">overall measurements</a> of your wardrobe door opening as follows:</p>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
+          <label for="topwidth">Top Width (mm)</label>
+          <input type="text" class="form-control required" id="topwidth" name="properties[Top Width]" required data-error="Please fill in this field if you want to proceed.">
+          <span class="help-block">&#42; Overall width</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 vertical-center-doors">
+        <div class="form-group">
+          <label for="leftheight">Left Height (mm)</label>
+          <input type="text" class="form-control required" id="leftheight" name="properties[Left Height]" required data-error="Please fill in this field if you want to proceed.">
+          <span class="help-block">&#42; Overall height</span>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <p class="text-center"><img class="img-responsive" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title }}"></p>
+      </div>
+
+      <div class="col-md-3 vertical-center-doors">
+        <div class="form-group">
+          <label for="rightheight">Right Height (mm)</label>
+          <input type="text" class="form-control required" id="rightheight" name="properties[Right Height]" required data-error="Please fill in this field if you want to proceed.">
+          <span class="help-block">&#42; Overall height</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
+          <label for="botwidth">Bottom Width (mm)</label>
+          <input type="text" class="form-control required" id="botwidth" name="properties[Bottom Width]" required data-error="Please fill in this field if you want to proceed.">
+          <span class="help-block">&#42; Overall width</span>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      {% comment %}Field - Doors are sitting on{% endcomment %}
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="sittingon">Doors are sitting on</label>
+          <input type="text" class="form-control required" id="sittingon" name="properties[Doors Sitting On]" required data-error="Please fill in this field if you want to proceed.">
+          <span class="help-block">eg. carpet/concrete</span>
+        </div>
+      </div>
+
+      {% comment %}Field - Floor Batten{% endcomment %}
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="floorbattenrequired">Do you require a Floor Batten?</label>
+          <select class="form-control" id="floorbattenrequired" name="properties[Floor Batten Required]">
+            <option>Please Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          {% comment %}TODO:  link to more info about floor battens
+          <p class="help-block">eg. carpet/concrete</p>
+          {% endcomment %}
+        </div>
+      
+      </div>
+    </div>
+  
+  </div>
+
+  <div class="col-md-4">
+    {% include 'product-add-to-cart' %}
+    <p class="text-right">&#42; price is <em>per set</em> of doors</p>
+  </div>
+
+</div>

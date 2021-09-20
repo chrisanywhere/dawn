@@ -1,331 +1,2076 @@
 [
   {
-    "name": "theme_info",
-    "theme_name": "Dawn",
-    "theme_version": "2.1.0",
-    "theme_author": "Shopify",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes/os20/themes-by-shopify/dawn",
-    "theme_support_url": "https://support.shopify.com/"
-  },
-  {
-    "name": "t:settings_schema.colors.name",
+    "name": "Blog",
     "settings": [
       {
-        "type": "header",
-        "content": "t:settings_schema.colors.settings.header__1.content"
-      },
-      {
-        "type": "color",
-        "id": "colors_solid_button_labels",
-        "default": "#FFFFFF",
-        "label": "t:settings_schema.colors.settings.colors_solid_button_labels.label",
-        "info": "t:settings_schema.colors.settings.colors_solid_button_labels.info"
-      },
-      {
-        "type": "color",
-        "id": "colors_accent_1",
-        "default": "#121212",
-        "label": "t:settings_schema.colors.settings.colors_accent_1.label",
-        "info": "t:settings_schema.colors.settings.colors_accent_1.info"
-      },
-      {
-        "id": "gradient_accent_1",
-        "type": "color_background",
-        "label": "t:settings_schema.colors.settings.gradient_accent_1.label"
-      },
-      {
-        "type": "color",
-        "id": "colors_accent_2",
-        "default": "#334FB4",
-        "label": "t:settings_schema.colors.settings.colors_accent_2.label"
-      },
-      {
-        "id": "gradient_accent_2",
-        "type": "color_background",
-        "label": "t:settings_schema.colors.settings.gradient_accent_2.label"
-      },
-      {
-        "type": "header",
-        "content": "t:settings_schema.colors.settings.header__2.content"
-      },
-      {
-        "type": "color",
-        "id": "colors_text",
-        "default": "#121212",
-        "label": "t:settings_schema.colors.settings.colors_text.label",
-        "info": "t:settings_schema.colors.settings.colors_text.info"
-      },
-      {
-        "type": "color",
-        "id": "colors_outline_button_labels",
-        "default": "#121212",
-        "label": "t:settings_schema.colors.settings.colors_outline_button_labels.label",
-        "info": "t:settings_schema.colors.settings.colors_outline_button_labels.info"
-      },
-      {
-        "type": "color",
-        "id": "colors_background_1",
-        "default": "#FFFFFF",
-        "label": "t:settings_schema.colors.settings.colors_background_1.label"
-      },
-      {
-        "id": "gradient_background_1",
-        "type": "color_background",
-        "label": "t:settings_schema.colors.settings.gradient_background_1.label"
-      },
-      {
-        "type": "color",
-        "id": "colors_background_2",
-        "default": "#F3F3F3",
-        "label": "t:settings_schema.colors.settings.colors_background_2.label"
-      },
-      {
-        "id": "gradient_background_2",
-        "type": "color_background",
-        "label": "t:settings_schema.colors.settings.gradient_background_2.label"
-      }
-    ]
-  },
-  {
-    "name": "t:settings_schema.typography.name",
-    "settings": [
-      {
-        "type": "header",
-        "content": "t:settings_schema.typography.settings.header__1.content"
-      },
-      {
-        "type": "font_picker",
-        "id": "type_header_font",
-        "default": "assistant_n4",
-        "label": "t:settings_schema.typography.settings.type_header_font.label",
-        "info": "t:settings_schema.typography.settings.type_header_font.info"
-      },
-      {
-        "type": "header",
-        "content": "t:settings_schema.typography.settings.header__2.content"
-      },
-      {
-        "type": "font_picker",
-        "id": "type_body_font",
-        "default": "assistant_n4",
-        "label": "t:settings_schema.typography.settings.type_body_font.label",
-        "info": "t:settings_schema.typography.settings.type_body_font.info"
-      }
-    ]
-  },
-  {
-    "name": "t:settings_schema.styles.name",
-    "settings": [
-      {
-        "type": "header",
-        "content": "t:settings_schema.styles.settings.header__1.content"
-      },
-      {
-        "type": "select",
-        "id": "sale_badge_color_scheme",
-        "options": [
-          {
-            "value": "accent-1",
-            "label": "t:settings_schema.styles.settings.sale_badge_color_scheme.options__2.label"
-          },
-          {
-            "value": "accent-2",
-            "label": "t:settings_schema.styles.settings.sale_badge_color_scheme.options__3.label"
-          },
-          {
-            "value": "background-2",
-            "label": "t:settings_schema.styles.settings.sale_badge_color_scheme.options__1.label"
-          }
-        ],
-        "default": "accent-2",
-        "label": "t:settings_schema.styles.settings.sale_badge_color_scheme.label"
-      },
-      {
-        "type": "select",
-        "id": "sold_out_badge_color_scheme",
-        "options": [
-          {
-            "value": "background-1",
-            "label": "t:settings_schema.styles.settings.sold_out_badge_color_scheme.options__1.label"
-          },
-          {
-            "value": "inverse",
-            "label": "t:settings_schema.styles.settings.sold_out_badge_color_scheme.options__2.label"
-          }
-        ],
-        "default": "inverse",
-        "label": "t:settings_schema.styles.settings.sold_out_badge_color_scheme.label"
-      },
-      {
-        "type": "header",
-        "content": "t:settings_schema.styles.settings.header__2.content"
-      },
-      {
-        "type": "select",
-        "id": "accent_icons",
-        "options": [
-          {
-            "value": "accent-1",
-            "label": "t:settings_schema.styles.settings.accent_icons.options__1.label"
-          },
-          {
-            "value": "accent-2",
-            "label": "t:settings_schema.styles.settings.accent_icons.options__2.label"
-          },
-          {
-            "value": "outline-button",
-            "label": "t:settings_schema.styles.settings.accent_icons.options__3.label"
-          },
-          {
-            "value": "text",
-            "label": "t:settings_schema.styles.settings.accent_icons.options__4.label"
-          }
-        ],
-        "default": "text",
-        "label": "t:settings_schema.styles.settings.accent_icons.label"
-      }
-    ]
-  },
-  {
-    "name": "t:settings_schema.layout.name",
-    "settings": [
-      {
-        "type": "select",
-        "id": "page_width",
-        "options": [
-          {
-            "value": "1200",
-            "label": "t:settings_schema.layout.settings.page_width.options__1.label"
-          },
-          {
-            "value": "1600",
-            "label": "t:settings_schema.layout.settings.page_width.options__2.label"
-          }
-        ],
-        "default": "1600",
-        "label": "t:settings_schema.layout.settings.page_width.label"
-      }
-    ]
-  },
-  {
-    "name": "t:settings_schema.social-media.name",
-    "settings": [
-      {
-        "type": "header",
-        "content": "t:settings_schema.social-media.settings.header.content"
-      },
-      {
-        "type": "text",
-        "id": "social_twitter_link",
-        "label": "t:settings_schema.social-media.settings.social_twitter_link.label",
-        "info": "t:settings_schema.social-media.settings.social_twitter_link.info"
-      },
-      {
-        "type": "text",
-        "id": "social_facebook_link",
-        "label": "t:settings_schema.social-media.settings.social_facebook_link.label",
-        "info": "t:settings_schema.social-media.settings.social_facebook_link.info"
-      },
-      {
-        "type": "text",
-        "id": "social_pinterest_link",
-        "label": "t:settings_schema.social-media.settings.social_pinterest_link.label",
-        "info": "t:settings_schema.social-media.settings.social_pinterest_link.info"
-      },
-      {
-        "type": "text",
-        "id": "social_instagram_link",
-        "label": "t:settings_schema.social-media.settings.social_instagram_link.label",
-        "info": "t:settings_schema.social-media.settings.social_instagram_link.info"
-      },
-      {
-        "type": "text",
-        "id": "social_tiktok_link",
-        "label": "t:settings_schema.social-media.settings.social_tiktok_link.label",
-        "info": "t:settings_schema.social-media.settings.social_tiktok_link.info"
-      },
-      {
-        "type": "text",
-        "id": "social_tumblr_link",
-        "label": "t:settings_schema.social-media.settings.social_tumblr_link.label",
-        "info": "t:settings_schema.social-media.settings.social_tumblr_link.info"
-      },
-      {
-        "type": "text",
-        "id": "social_snapchat_link",
-        "label": "t:settings_schema.social-media.settings.social_snapchat_link.label",
-        "info": "t:settings_schema.social-media.settings.social_snapchat_link.info"
-      },
-      {
-        "type": "text",
-        "id": "social_youtube_link",
-        "label": "t:settings_schema.social-media.settings.social_youtube_link.label",
-        "info": "t:settings_schema.social-media.settings.social_youtube_link.info"
-      },
-      {
-        "type": "text",
-        "id": "social_vimeo_link",
-        "label": "t:settings_schema.social-media.settings.social_vimeo_link.label",
-        "info": "t:settings_schema.social-media.settings.social_vimeo_link.info"
-      }
-    ]
-  },
-  {
-    "name": "t:settings_schema.search_input.name",
-    "settings": [
-      {
-        "type": "header",
-        "content": "t:settings_schema.search_input.settings.header.content"
+        "type": "checkbox",
+        "id": "round-avatars",
+        "label": "Round avatars",
+        "info": "Yes"
       },
       {
         "type": "checkbox",
-        "id": "predictive_search_enabled",
-        "default": true,
-        "label": "t:settings_schema.search_input.settings.predictive_search_enabled.label"
+        "id": "show-author-bios",
+        "label": "Show author bios",
+        "info": "Yes"
       },
       {
         "type": "checkbox",
-        "id": "predictive_search_show_vendor",
-        "default": false,
-        "label": "t:settings_schema.search_input.settings.predictive_search_show_vendor.label",
-        "info": "t:settings_schema.search_input.settings.predictive_search_show_vendor.info"
+        "id": "show-author-on-article",
+        "label": "Show author on article",
+        "info": "Yes"
       },
       {
         "type": "checkbox",
-        "id": "predictive_search_show_price",
-        "default": true,
-        "label": "t:settings_schema.search_input.settings.predictive_search_show_price.label",
-        "info": "t:settings_schema.search_input.settings.predictive_search_show_price.info"
+        "id": "show-author-on-index",
+        "label": "Show author on index",
+        "info": "Yes"
+      },
+      {
+        "type": "text",
+        "id": "truncate-words",
+        "label": "Truncate words",
+        "default": "25",
+        "info": "Number of words to show in the blog article listings."
       }
     ]
   },
   {
-    "name": "t:settings_schema.favicon.name",
+    "name": "Branding",
     "settings": [
       {
-        "type": "image_picker",
-        "id": "favicon",
-        "label": "t:settings_schema.favicon.settings.favicon.label",
-        "info": "t:settings_schema.favicon.settings.favicon.info"
+        "type": "radio",
+        "id": "logo-alignment",
+        "label": "Logo alignment",
+        "options": [
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "image",
+        "id": "logo-file.png",
+        "label": "Logo file"
+      },
+      {
+        "type": "radio",
+        "id": "logo-placement",
+        "label": "Logo placement",
+        "options": [
+          {
+            "value": "navbar",
+            "label": "Navbar"
+          },
+          {
+            "value": "sidebar",
+            "label": "Sidebar"
+          },
+          {
+            "value": "header",
+            "label": "Header"
+          }
+        ],
+        "default": "navbar"
+      },
+      {
+        "type": "checkbox",
+        "id": "use-logo-image",
+        "label": "Use logo image",
+        "info": "Yes"
       }
     ]
   },
   {
-    "name": "t:settings_schema.currency_format.name",
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection-to-link-to-if-cart-empty",
+        "label": "Collection to link to if cart empty"
+      }
+    ]
+  },
+  {
+    "name": "Collections",
+    "settings": [
+      {
+        "type": "text",
+        "id": "maximum-tag-buttons",
+        "label": "Maximum tag buttons",
+        "default": "10",
+        "info": "If the number of tags exceeds this limit, they will automatically be displayed in a dropdown menu."
+      },
+      {
+        "type": "radio",
+        "id": "tag-format",
+        "label": "Tag format",
+        "options": [
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          },
+          {
+            "value": "buttons",
+            "label": "Buttons"
+          }
+        ],
+        "default": "dropdown"
+      }
+    ]
+  },
+  {
+    "name": "Design",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "condensed-tables",
+        "label": "Condensed tables",
+        "info": "Yes"
+      },
+      {
+        "type": "textarea",
+        "id": "custom-css",
+        "label": "Custom CSS",
+        "info": "Feel free to override any of the CSS here. This is included inside the stylesheet at the end."
+      },
+      {
+        "type": "checkbox",
+        "id": "highlight-table-rows-on-hover",
+        "label": "Highlight table rows on hover",
+        "info": "Yes"
+      },
+      {
+        "type": "radio",
+        "id": "color-scheme",
+        "label": "Navbar Color scheme",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "dark",
+            "label": "Dark"
+          }
+        ],
+        "default": "light"
+      },
+      {
+        "type": "color",
+        "id": "primary-color",
+        "label": "Primary color"
+      },
+      {
+        "type": "color",
+        "id": "secondary-color",
+        "label": "Secondary color"
+      },
+      {
+        "type": "checkbox",
+        "id": "site-background-image",
+        "label": "Site background image",
+        "info": "Yes"
+      },
+      {
+        "type": "image",
+        "id": "site-background-image-file.jpg",
+        "label": "Site background image file"
+      },
+      {
+        "type": "text",
+        "id": "site-background-image-position",
+        "label": "Site background image position",
+        "default": "center top"
+      },
+      {
+        "type": "radio",
+        "id": "site-background-image-repeat",
+        "label": "Site background image repeat",
+        "options": [
+          {
+            "value": "repeat",
+            "label": "repeat"
+          },
+          {
+            "value": "repeat-x",
+            "label": "repeat-x"
+          },
+          {
+            "value": "repeat-y",
+            "label": "repeat-y"
+          },
+          {
+            "value": "no-repeat",
+            "label": "no-repeat"
+          },
+          {
+            "value": "inherit",
+            "label": "inherit"
+          }
+        ],
+        "default": "repeat"
+      },
+      {
+        "type": "radio",
+        "id": "site-color-scheme",
+        "label": "Site Color scheme",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "dark",
+            "label": "Dark"
+          }
+        ],
+        "default": "light"
+      },
+      {
+        "type": "checkbox",
+        "id": "striped-tables",
+        "label": "Striped tables",
+        "info": "Yes"
+      },
+      {
+        "type": "checkbox",
+        "id": "table-borders",
+        "label": "Table borders",
+        "info": "Yes"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "blog",
+        "id": "column-1-blog",
+        "label": "1st column blog"
+      },
+      {
+        "type": "link_list",
+        "id": "column-1-menu",
+        "label": "1st column menu"
+      },
+      {
+        "type": "textarea",
+        "id": "column-1-text",
+        "label": "1st column text"
+      },
+      {
+        "type": "blog",
+        "id": "column-2-blog",
+        "label": "2nd column blog"
+      },
+      {
+        "type": "link_list",
+        "id": "column-2-menu",
+        "label": "2nd column menu"
+      },
+      {
+        "type": "textarea",
+        "id": "column-2-text",
+        "label": "2nd column text"
+      },
+      {
+        "type": "blog",
+        "id": "column-3-blog",
+        "label": "3rd column blog"
+      },
+      {
+        "type": "link_list",
+        "id": "column-3-menu",
+        "label": "3rd column menu"
+      },
+      {
+        "type": "textarea",
+        "id": "column-3-text",
+        "label": "3rd column text"
+      },
+      {
+        "type": "blog",
+        "id": "column-4-blog",
+        "label": "4th column blog"
+      },
+      {
+        "type": "link_list",
+        "id": "column-4-menu",
+        "label": "4th column menu"
+      },
+      {
+        "type": "textarea",
+        "id": "column-4-text",
+        "label": "4th column text"
+      },
+      {
+        "type": "radio",
+        "id": "footer-columns",
+        "label": "Columns",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide-theme-designer-credits",
+        "label": "Hide theme designer credits",
+        "info": "Yes"
+      },
+      {
+        "type": "text",
+        "id": "shopify-affiliate-code",
+        "label": "Shopify affiliate code",
+        "default": "lucid-design"
+      }
+    ]
+  },
+  {
+    "name": "General",
+    "settings": [
+      {
+        "type": "text",
+        "id": "breadcrumb-separator",
+        "label": "Breadcrumb separator",
+        "default": "»"
+      },
+      {
+        "type": "radio",
+        "id": "default-pagination",
+        "label": "Default pagination",
+        "options": [
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "15",
+            "label": "15"
+          },
+          {
+            "value": "20",
+            "label": "20"
+          },
+          {
+            "value": "25",
+            "label": "25"
+          },
+          {
+            "value": "30",
+            "label": "30"
+          },
+          {
+            "value": "40",
+            "label": "40"
+          },
+          {
+            "value": "50",
+            "label": "50"
+          }
+        ],
+        "default": "10"
+      },
+      {
+        "type": "collection",
+        "id": "typeahead-collection",
+        "label": "Search typeahead collection",
+        "info": "We recommend you create a collection of all products (i.e., an automatic collection where price (and\/or inventory) is greater than 0."
+      },
+      {
+        "type": "checkbox",
+        "id": "show-breadcrumbs",
+        "label": "Show breadcrumbs",
+        "info": "Yes"
+      },
+      {
+        "type": "checkbox",
+        "id": "show-collection-title-in-meta-title",
+        "label": "Show collection title in meta title",
+        "info": "Yes"
+      },
+      {
+        "type": "checkbox",
+        "id": "show-search-in-navbar",
+        "label": "Show search in navbar",
+        "info": "Yes"
+      },
+      {
+        "type": "radio",
+        "id": "thumbnails-per-row",
+        "label": "Thumbnails per row",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          }
+        ],
+        "default": "3"
+      }
+    ]
+  },
+  {
+    "name": "Homepage",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "homepage-featured-collections-limit",
+        "label": "Featured collections limit",
+        "options": [
+          {
+            "value": "1-row",
+            "label": "1 row"
+          },
+          {
+            "value": "2-rows",
+            "label": "2 rows"
+          },
+          {
+            "value": "3-rows",
+            "label": "3 rows"
+          },
+          {
+            "value": "unlimited",
+            "label": "Unlimited"
+          }
+        ],
+        "default": "1-row"
+      },
+      {
+        "type": "link_list",
+        "id": "featured-collections-linklist",
+        "label": "Featured collections linklist"
+      },
+      {
+        "type": "radio",
+        "id": "featured-products-limit",
+        "label": "Featured products limit",
+        "options": [
+          {
+            "value": "1-row",
+            "label": "1 row"
+          },
+          {
+            "value": "2-rows",
+            "label": "2 rows"
+          },
+          {
+            "value": "3-rows",
+            "label": "3 rows"
+          },
+          {
+            "value": "4-rows",
+            "label": "4 rows"
+          },
+          {
+            "value": "unlimited",
+            "label": "Unlimited"
+          }
+        ],
+        "default": "1-row"
+      },
+      {
+        "type": "collection",
+        "id": "homepage-featured-products-collection",
+        "label": "Homepage featured products collection"
+      },
+      {
+        "type": "page",
+        "id": "homepage-intro",
+        "label": "Homepage intro"
+      }
+    ]
+  },
+  {
+    "name": "Homepage slider",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "slide-active-1",
+        "label": "1st slide active",
+        "info": "Yes"
+      },
+      {
+        "type": "text",
+        "id": "slide-call-to-action-1",
+        "label": "1st slide call-to-action"
+      },
+      {
+        "type": "textarea",
+        "id": "slide-caption-1",
+        "label": "1st slide caption"
+      },
+      {
+        "type": "text",
+        "id": "slide-heading-1",
+        "label": "1st slide heading"
+      },
+      {
+        "type": "image",
+        "id": "slide-image-1.jpg",
+        "label": "1st slide image"
+      },
+      {
+        "type": "text",
+        "id": "slide-link-1",
+        "label": "1st slide link"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide-active-2",
+        "label": "2nd slide active",
+        "info": "Yes"
+      },
+      {
+        "type": "text",
+        "id": "slide-call-to-action-2",
+        "label": "2nd slide call-to-action"
+      },
+      {
+        "type": "textarea",
+        "id": "slide-caption-2",
+        "label": "2nd slide caption"
+      },
+      {
+        "type": "text",
+        "id": "slide-heading-2",
+        "label": "2nd slide heading"
+      },
+      {
+        "type": "image",
+        "id": "slide-image-2.jpg",
+        "label": "2nd slide image"
+      },
+      {
+        "type": "text",
+        "id": "slide-link-2",
+        "label": "2nd slide link"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide-active-3",
+        "label": "3rd slide active",
+        "info": "Yes"
+      },
+      {
+        "type": "text",
+        "id": "slide-call-to-action-3",
+        "label": "3rd slide call-to-action"
+      },
+      {
+        "type": "textarea",
+        "id": "slide-caption-3",
+        "label": "3rd slide caption"
+      },
+      {
+        "type": "text",
+        "id": "slide-heading-3",
+        "label": "3rd slide heading"
+      },
+      {
+        "type": "image",
+        "id": "slide-image-3.jpg",
+        "label": "3rd slide image"
+      },
+      {
+        "type": "text",
+        "id": "slide-link-3",
+        "label": "3rd slide link"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide-active-4",
+        "label": "4th slide active",
+        "info": "Yes"
+      },
+      {
+        "type": "text",
+        "id": "slide-call-to-action-4",
+        "label": "4th slide call-to-action"
+      },
+      {
+        "type": "textarea",
+        "id": "slide-caption-4",
+        "label": "4th slide caption"
+      },
+      {
+        "type": "text",
+        "id": "slide-heading-4",
+        "label": "4th slide heading"
+      },
+      {
+        "type": "image",
+        "id": "slide-image-4.jpg",
+        "label": "4th slide image"
+      },
+      {
+        "type": "text",
+        "id": "slide-link-4",
+        "label": "4th slide link"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide-active-5",
+        "label": "5th slide active",
+        "info": "Yes"
+      },
+      {
+        "type": "text",
+        "id": "slide-call-to-action-5",
+        "label": "5th slide call-to-action"
+      },
+      {
+        "type": "textarea",
+        "id": "slide-caption-5",
+        "label": "5th slide caption"
+      },
+      {
+        "type": "text",
+        "id": "slide-heading-5",
+        "label": "5th slide heading"
+      },
+      {
+        "type": "image",
+        "id": "slide-image-5.jpg",
+        "label": "5th slide image"
+      },
+      {
+        "type": "text",
+        "id": "slide-link-5",
+        "label": "5th slide link"
+      },
+      {
+        "type": "text",
+        "id": "slide-navigation-icon",
+        "label": "Slide navigation icon",
+        "default": "icon-chevron-sign",
+        "info": "You can input any of the font awesome directional icons in here. Do not include the directional part of the icon class (e.g., omit \"-left\" or \"-right\"). E.g., for \"icon-chevron-sign-left\", you would enter \"icon-chevron-sign\"."
+      },
+      {
+        "type": "radio",
+        "id": "slider-placement",
+        "label": "Slider placement",
+        "options": [
+          {
+            "value": "full-width",
+            "label": "Full width"
+          },
+          {
+            "value": "within-container",
+            "label": "Within container"
+          },
+          {
+            "value": "next-to-sidebar",
+            "label": "Next to sidebar Important. If you choose full-width, the slider will span the entire browser winder (which could be huge!). This means your images need to be large enough to allow for this which could slow down the overall speed of the site."
+          }
+        ],
+        "default": "full-width"
+      }
+    ]
+  },
+  {
+    "name": "Localization",
+    "settings": [
+      {
+        "type": "text",
+        "id": "left-quote",
+        "label": "Left quote",
+        "default": "“"
+      },
+      {
+        "type": "text",
+        "id": "long-date-format",
+        "label": "Long date format",
+        "default": "%d %B %Y at %H:%M"
+      },
+      {
+        "type": "text",
+        "id": "right-quote",
+        "label": "Right quote",
+        "default": "”"
+      },
+      {
+        "type": "text",
+        "id": "short-date-format",
+        "label": "Short date format",
+        "default": "%d %B %Y"
+      }
+    ]
+  },
+  {
+    "name": "Money",
+    "settings": [
+      {
+        "type": "text",
+        "id": "default-currency",
+        "label": "Default currency",
+        "info": "E.g., NZD"
+      },
+      {
+        "type": "checkbox",
+        "id": "show-currency-with-prices",
+        "label": "Show currency with prices",
+        "info": "Yes E.g., $123.45 NZD"
+      },
+      {
+        "type": "checkbox",
+        "id": "show-multiple-currencies",
+        "label": "Show multiple currencies",
+        "info": "Yes Although you will be able to display prices on your store front in different currencies, Shopify will still process orders in your shop's currency."
+      },
+      {
+        "type": "text",
+        "id": "supported-currencies",
+        "label": "Supported currencies",
+        "info": "Separate your currency codes with a space. Use the ISO 4217 3-letter currency code—click [here](http:\/\/www.xe.com\/iso4217.php) for a complete list of currency codes. E.g., NZD USD CAD"
+      }
+    ]
+  },
+  {
+    "name": "Products",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "placement-of-add-to-cart-button",
+        "label": "Placement of add to cart button",
+        "options": [
+          {
+            "value": "below-variant-options",
+            "label": "Below variant options"
+          },
+          {
+            "value": "at-top-of-page",
+            "label": "At top of page"
+          },
+          {
+            "value": "below-description-above-meta-data",
+            "label": "Below description (above meta data)"
+          },
+          {
+            "value": "at-bottom-of-page",
+            "label": "At bottom of page"
+          }
+        ],
+        "default": "below-variant-options"
+      }
+    ]
+  },
+  {
+    "name": "Sidebar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show-sidebar",
+        "label": "Show sidebar",
+        "info": "Yes"
+      },
+      {
+        "type": "blog",
+        "id": "sidebar-blog",
+        "label": "Sidebar blog"
+      },
+      {
+        "type": "link_list",
+        "id": "sidebar-linklist",
+        "label": "Sidebar linklist"
+      },
+      {
+        "type": "text",
+        "id": "truncate-blog-articles",
+        "label": "Truncate blog articles",
+        "default": "10",
+        "info": "Number of words"
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "text",
+        "id": "envelope",
+        "label": "Address for email icon"
+      },
+      {
+        "type": "text",
+        "id": "facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "google-plus",
+        "label": "Google+ URL"
+      },
+      {
+        "type": "radio",
+        "id": "newsletter-signup-placement",
+        "label": "Newsletter signup placement",
+        "options": [
+          {
+            "value": "column-1",
+            "label": "Column 1"
+          },
+          {
+            "value": "column-2",
+            "label": "Column 2"
+          },
+          {
+            "value": "column-3",
+            "label": "Column 3"
+          },
+          {
+            "value": "column-4",
+            "label": "Column 4"
+          },
+          {
+            "value": "sidebar",
+            "label": "Sidebar"
+          }
+        ],
+        "default": "column-1"
+      },
+      {
+        "type": "text",
+        "id": "pinterest",
+        "label": "Pinterest URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "rss",
+        "label": "RSS social icon",
+        "info": "Yes"
+      },
+      {
+        "type": "radio",
+        "id": "social-links-placement",
+        "label": "Social links placement",
+        "options": [
+          {
+            "value": "column-1",
+            "label": "Column 1"
+          },
+          {
+            "value": "column-2",
+            "label": "Column 2"
+          },
+          {
+            "value": "column-3",
+            "label": "Column 3"
+          },
+          {
+            "value": "column-4",
+            "label": "Column 4"
+          },
+          {
+            "value": "sidebar",
+            "label": "Sidebar"
+          }
+        ],
+        "default": "column-1"
+      },
+      {
+        "type": "text",
+        "id": "twitter",
+        "label": "Twitter URL"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
     "settings": [
       {
         "type": "header",
-        "content": "t:settings_schema.currency_format.settings.content"
+        "content": "Body"
       },
       {
         "type": "paragraph",
-        "content": "t:settings_schema.currency_format.settings.paragraph"
+        "content": "Body font"
+      },
+      {
+        "type": "text",
+        "id": "body-font-custom",
+        "label": "Custom font name"
+      },
+      {
+        "type": "select",
+        "id": "body-font",
+        "label": "Fallback\/default",
+        "options": [
+          {
+            "value": "",
+            "label": ""
+          },
+          {
+            "value": "Helvetica, Arial, sans-serif",
+            "label": "Helvetica\/Arial",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Impact, Charcoal, Helvetica, Arial, sans-serif",
+            "label": "Impact",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
+            "label": "Lucida Grande",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Trebuchet MS, sans-serif",
+            "label": "Trebuchet MS",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Verdana, Helvetica, Arial, sans-serif",
+            "label": "Verdana",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Garamond, Baskerville, Caslon, serif",
+            "label": "Garamond",
+            "group": "Serif"
+          },
+          {
+            "value": "Georgia, Utopia, 'Times New Roman', Times, serif",
+            "label": "Georgia",
+            "group": "Serif"
+          },
+          {
+            "value": "Palatino, 'Palatino Linotype', 'Book Antiqua', serif",
+            "label": "Palatino",
+            "group": "Serif"
+          },
+          {
+            "value": "'Times New Roman', Times, serif",
+            "label": "Times New Roman",
+            "group": "Serif"
+          },
+          {
+            "value": "'Courier New', Courier, monospace",
+            "label": "Courier New",
+            "group": "Monospace"
+          },
+          {
+            "value": "Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace",
+            "label": "Monaco\/Lucida Console",
+            "group": "Monospace"
+          }
+        ],
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "body-font-weight",
+        "label": "Weight"
+      },
+      {
+        "type": "text",
+        "id": "body-font-weight-size",
+        "label": "Size"
+      },
+      {
+        "type": "header",
+        "content": "Footer"
+      },
+      {
+        "type": "paragraph",
+        "content": "Footer font"
+      },
+      {
+        "type": "text",
+        "id": "footer-font-custom",
+        "label": "Custom font name"
+      },
+      {
+        "type": "select",
+        "id": "footer-font",
+        "label": "Fallback\/default",
+        "options": [
+          {
+            "value": "",
+            "label": ""
+          },
+          {
+            "value": "Helvetica, Arial, sans-serif",
+            "label": "Helvetica\/Arial",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Impact, Charcoal, Helvetica, Arial, sans-serif",
+            "label": "Impact",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
+            "label": "Lucida Grande",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Trebuchet MS, sans-serif",
+            "label": "Trebuchet MS",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Verdana, Helvetica, Arial, sans-serif",
+            "label": "Verdana",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Garamond, Baskerville, Caslon, serif",
+            "label": "Garamond",
+            "group": "Serif"
+          },
+          {
+            "value": "Georgia, Utopia, 'Times New Roman', Times, serif",
+            "label": "Georgia",
+            "group": "Serif"
+          },
+          {
+            "value": "Palatino, 'Palatino Linotype', 'Book Antiqua', serif",
+            "label": "Palatino",
+            "group": "Serif"
+          },
+          {
+            "value": "'Times New Roman', Times, serif",
+            "label": "Times New Roman",
+            "group": "Serif"
+          },
+          {
+            "value": "'Courier New', Courier, monospace",
+            "label": "Courier New",
+            "group": "Monospace"
+          },
+          {
+            "value": "Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace",
+            "label": "Monaco\/Lucida Console",
+            "group": "Monospace"
+          }
+        ],
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "footer-font-weight",
+        "label": "Weight"
+      },
+      {
+        "type": "text",
+        "id": "footer-font-weight-size",
+        "label": "Size"
+      },
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "radio",
+        "id": "heading-case",
+        "label": "Heading case",
+        "options": [
+          {
+            "value": "normal",
+            "label": "Normal (as typed)"
+          },
+          {
+            "value": "lowercase",
+            "label": "lowercase"
+          },
+          {
+            "value": "uppercase",
+            "label": "UPPERCASE"
+          },
+          {
+            "value": "capitalize",
+            "label": "Title Case"
+          }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "paragraph",
+        "content": "Heading font"
+      },
+      {
+        "type": "text",
+        "id": "heading-font-custom",
+        "label": "Custom font name"
+      },
+      {
+        "type": "select",
+        "id": "heading-font",
+        "label": "Fallback\/default",
+        "options": [
+          {
+            "value": "",
+            "label": ""
+          },
+          {
+            "value": "Helvetica, Arial, sans-serif",
+            "label": "Helvetica\/Arial",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Impact, Charcoal, Helvetica, Arial, sans-serif",
+            "label": "Impact",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
+            "label": "Lucida Grande",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Trebuchet MS, sans-serif",
+            "label": "Trebuchet MS",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Verdana, Helvetica, Arial, sans-serif",
+            "label": "Verdana",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Garamond, Baskerville, Caslon, serif",
+            "label": "Garamond",
+            "group": "Serif"
+          },
+          {
+            "value": "Georgia, Utopia, 'Times New Roman', Times, serif",
+            "label": "Georgia",
+            "group": "Serif"
+          },
+          {
+            "value": "Palatino, 'Palatino Linotype', 'Book Antiqua', serif",
+            "label": "Palatino",
+            "group": "Serif"
+          },
+          {
+            "value": "'Times New Roman', Times, serif",
+            "label": "Times New Roman",
+            "group": "Serif"
+          },
+          {
+            "value": "'Courier New', Courier, monospace",
+            "label": "Courier New",
+            "group": "Monospace"
+          },
+          {
+            "value": "Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace",
+            "label": "Monaco\/Lucida Console",
+            "group": "Monospace"
+          }
+        ],
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "heading-font-weight",
+        "label": "Weight"
+      },
+      {
+        "type": "text",
+        "id": "heading-font-weight-size",
+        "label": "Size"
+      },
+      {
+        "type": "radio",
+        "id": "heading-style",
+        "label": "Heading style",
+        "options": [
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "italic",
+            "label": "Italic"
+          }
+        ],
+        "default": "normal"
       },
       {
         "type": "checkbox",
-        "id": "currency_code_enabled",
-        "label": "t:settings_schema.currency_format.settings.currency_code_enabled.label",
+        "id": "heading-letterpress",
+        "label": "Heading “letterpress”",
+        "info": "Yes"
+      },
+      {
+        "type": "header",
+        "content": "Nav"
+      },
+      {
+        "type": "radio",
+        "id": "nav-case",
+        "label": "Nav case",
+        "options": [
+          {
+            "value": "normal",
+            "label": "Normal (as typed)"
+          },
+          {
+            "value": "lowercase",
+            "label": "lowercase"
+          },
+          {
+            "value": "uppercase",
+            "label": "UPPERCASE"
+          },
+          {
+            "value": "capitalize",
+            "label": "Title Case"
+          }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "radio",
+        "id": "nav-style",
+        "label": "Nav style",
+        "options": [
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "italic",
+            "label": "Italic"
+          }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "paragraph",
+        "content": "Navbar font"
+      },
+      {
+        "type": "text",
+        "id": "navbar-font-custom",
+        "label": "Custom font name"
+      },
+      {
+        "type": "select",
+        "id": "navbar-font",
+        "label": "Fallback\/default",
+        "options": [
+          {
+            "value": "",
+            "label": ""
+          },
+          {
+            "value": "Helvetica, Arial, sans-serif",
+            "label": "Helvetica\/Arial",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Impact, Charcoal, Helvetica, Arial, sans-serif",
+            "label": "Impact",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
+            "label": "Lucida Grande",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Trebuchet MS, sans-serif",
+            "label": "Trebuchet MS",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Verdana, Helvetica, Arial, sans-serif",
+            "label": "Verdana",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Garamond, Baskerville, Caslon, serif",
+            "label": "Garamond",
+            "group": "Serif"
+          },
+          {
+            "value": "Georgia, Utopia, 'Times New Roman', Times, serif",
+            "label": "Georgia",
+            "group": "Serif"
+          },
+          {
+            "value": "Palatino, 'Palatino Linotype', 'Book Antiqua', serif",
+            "label": "Palatino",
+            "group": "Serif"
+          },
+          {
+            "value": "'Times New Roman', Times, serif",
+            "label": "Times New Roman",
+            "group": "Serif"
+          },
+          {
+            "value": "'Courier New', Courier, monospace",
+            "label": "Courier New",
+            "group": "Monospace"
+          },
+          {
+            "value": "Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace",
+            "label": "Monaco\/Lucida Console",
+            "group": "Monospace"
+          }
+        ],
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "navbar-font-weight",
+        "label": "Weight"
+      },
+      {
+        "type": "text",
+        "id": "navbar-font-weight-size",
+        "label": "Size"
+      },
+      {
+        "type": "header",
+        "content": "Sidebar"
+      },
+      {
+        "type": "paragraph",
+        "content": "Sidebar base font"
+      },
+      {
+        "type": "text",
+        "id": "sidebar-base-font-custom",
+        "label": "Custom font name"
+      },
+      {
+        "type": "select",
+        "id": "sidebar-base-font",
+        "label": "Fallback\/default",
+        "options": [
+          {
+            "value": "",
+            "label": ""
+          },
+          {
+            "value": "Helvetica, Arial, sans-serif",
+            "label": "Helvetica\/Arial",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Impact, Charcoal, Helvetica, Arial, sans-serif",
+            "label": "Impact",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
+            "label": "Lucida Grande",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Trebuchet MS, sans-serif",
+            "label": "Trebuchet MS",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Verdana, Helvetica, Arial, sans-serif",
+            "label": "Verdana",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Garamond, Baskerville, Caslon, serif",
+            "label": "Garamond",
+            "group": "Serif"
+          },
+          {
+            "value": "Georgia, Utopia, 'Times New Roman', Times, serif",
+            "label": "Georgia",
+            "group": "Serif"
+          },
+          {
+            "value": "Palatino, 'Palatino Linotype', 'Book Antiqua', serif",
+            "label": "Palatino",
+            "group": "Serif"
+          },
+          {
+            "value": "'Times New Roman', Times, serif",
+            "label": "Times New Roman",
+            "group": "Serif"
+          },
+          {
+            "value": "'Courier New', Courier, monospace",
+            "label": "Courier New",
+            "group": "Monospace"
+          },
+          {
+            "value": "Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace",
+            "label": "Monaco\/Lucida Console",
+            "group": "Monospace"
+          }
+        ],
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "sidebar-base-font-weight",
+        "label": "Weight"
+      },
+      {
+        "type": "text",
+        "id": "sidebar-base-font-weight-size",
+        "label": "Size"
+      },
+      {
+        "type": "radio",
+        "id": "sidebar-nav-case",
+        "label": "Sidebar nav case",
+        "options": [
+          {
+            "value": "normal",
+            "label": "Normal (as typed)"
+          },
+          {
+            "value": "lowercase",
+            "label": "lowercase"
+          },
+          {
+            "value": "uppercase",
+            "label": "UPPERCASE"
+          },
+          {
+            "value": "capitalize",
+            "label": "Title Case"
+          }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "paragraph",
+        "content": "Sidebar nav font"
+      },
+      {
+        "type": "text",
+        "id": "sidebar-nav-font-custom",
+        "label": "Custom font name"
+      },
+      {
+        "type": "select",
+        "id": "sidebar-nav-font",
+        "label": "Fallback\/default",
+        "options": [
+          {
+            "value": "",
+            "label": ""
+          },
+          {
+            "value": "Helvetica, Arial, sans-serif",
+            "label": "Helvetica\/Arial",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Impact, Charcoal, Helvetica, Arial, sans-serif",
+            "label": "Impact",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
+            "label": "Lucida Grande",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Trebuchet MS, sans-serif",
+            "label": "Trebuchet MS",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Verdana, Helvetica, Arial, sans-serif",
+            "label": "Verdana",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Garamond, Baskerville, Caslon, serif",
+            "label": "Garamond",
+            "group": "Serif"
+          },
+          {
+            "value": "Georgia, Utopia, 'Times New Roman', Times, serif",
+            "label": "Georgia",
+            "group": "Serif"
+          },
+          {
+            "value": "Palatino, 'Palatino Linotype', 'Book Antiqua', serif",
+            "label": "Palatino",
+            "group": "Serif"
+          },
+          {
+            "value": "'Times New Roman', Times, serif",
+            "label": "Times New Roman",
+            "group": "Serif"
+          },
+          {
+            "value": "'Courier New', Courier, monospace",
+            "label": "Courier New",
+            "group": "Monospace"
+          },
+          {
+            "value": "Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace",
+            "label": "Monaco\/Lucida Console",
+            "group": "Monospace"
+          }
+        ],
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "sidebar-nav-font-weight",
+        "label": "Weight"
+      },
+      {
+        "type": "text",
+        "id": "sidebar-nav-font-weight-size",
+        "label": "Size"
+      }
+    ]
+  },
+  {
+    "name": "Shipping Rates Calculator",
+    "settings": [
+      {
+        "type": "select",
+        "id": "shipping_calculator",
+        "label": "Show the shipping calculator?",
+        "options": [
+          {
+            "value": "Disabled",
+            "label": "No"
+          },
+          {
+            "value": "Enabled",
+            "label": "Yes"
+          }
+        ],
+        "default": "Enabled"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_heading",
+        "label": "Heading text",
+        "default": "Get shipping estimates"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_default_country",
+        "label": "Default country selection",
+        "default": "United States"
+      },
+      {
+        "type": "paragraph",
+        "content": "If your customer is logged-in, the country in his default shipping address will be selected. If you are not sure about the  spelling to use here, refer to the first checkout page."
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_submit_button_label",
+        "label": "Submit button label",
+        "default": "Calculate shipping"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_submit_button_label_disabled",
+        "label": "Submit button label when calculating",
+        "default": "Calculating..."
+      },
+      {
+        "type": "paragraph",
+        "content": "Do not forget to include the snippet shipping-calculator in your cart.liquid template where you want the shipping  calculator to appear. You can get the snippet here: [shipping-calculator.liquid](https:\/\/github.com\/carolineschnapp\/shipping-calculator\/blob\/master\/shipping-calculator.liquid) ."
+      }
+    ]
+  },
+  {
+    "name": "Shipping Calculator",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "If you have any questions or concerns, please contact us at [support@fuelmade.com](mailto:support@fuelmade.com)"
+      },
+      {
+        "type": "header",
+        "content": "Important note:"
+      },
+      {
+        "type": "paragraph",
+        "content": "To function properly, your [shipping options](http:\/\/myshopify.com\/admin\/settings\/shipping) as set up in the admin must be formatted such that the SHIPPING SERVICE NAME is formatted like this: 'Service Name (#-# days)', e.g., 'Standard Shipping (1-5 days)'"
+      },
+      {
+        "type": "header",
+        "content": "Geolocation Options"
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_calculator_use_geolocation",
+        "label": "Use automatic geolocation?",
         "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_calculator_use_customer_address",
+        "label": "Use customer's default address if logged in instead of geolocating?",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "shipping_calculator_language",
+        "label": "Geolocation language",
+        "options": [
+          {
+            "value": "en",
+            "label": "English"
+          },
+          {
+            "value": "de",
+            "label": "German"
+          },
+          {
+            "value": "es",
+            "label": "Spanish"
+          },
+          {
+            "value": "fr",
+            "label": "French"
+          },
+          {
+            "value": "ja",
+            "label": "Japanese"
+          },
+          {
+            "value": "pt-BR",
+            "label": "Portuguese (Brazil)"
+          },
+          {
+            "value": "ru",
+            "label": "Russian"
+          },
+          {
+            "value": "zh-CN",
+            "label": "Chinese (PRC)"
+          }
+        ],
+        "default": "en"
+      },
+      {
+        "type": "header",
+        "content": "Form Options",
+        "info": "The form will show up if geolocation fails, geolocation is turned off, or the user wants to manually input a different address"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_form_header",
+        "label": "Form Header",
+        "default": "Shipping Rates Calculator",
+        "info": "E.g., 'Shipping Rates Calculator'"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_postal_code_placeholder",
+        "label": "Placeholder for postal\/zip code input",
+        "default": "Zip Code",
+        "info": "E.g., 'Zip Code'"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_text_while_calculating",
+        "label": "Text to display while calculating shipping price",
+        "default": "Calculating shipping...",
+        "info": "E.g., 'Calculating shipping...''"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_get_estimate_button_text",
+        "label": "Text to display on button",
+        "default": "Get Shipping Estimate",
+        "info": "E.g., 'Get Shipping Estimate'"
+      },
+      {
+        "type": "header",
+        "content": "Rate Display Options"
+      },
+      {
+        "type": "text",
+        "id": "shipping_rate_format",
+        "label": "Format of shipping rate.",
+        "default": "[name] - [price]",
+        "info": "Available variables: [name], [price]. E.g., '[name] - [price]' would result in 'Standard Shipping (3-5 days) - $10.00'"
+      },
+      {
+        "type": "header",
+        "content": "Delivery Estimate Options"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_cutoff_time",
+        "label": "Cutoff time to ship today",
+        "default": "12:00",
+        "info": "Format: (HH:MM), e.g., 08:30 or 16:00"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_estimate_time_format",
+        "label": "Date format for 'Get it by ___________' display",
+        "default": "dddd, MMM Do",
+        "info": "[Click here for valid formats](http:\/\/momentjs.com\/docs\/#\/parsing\/string-format\/).  Note: punctuation like commas, periods, hyphens are allowed."
+      },
+      {
+        "type": "select",
+        "id": "shipping_calculator_timezone_offset",
+        "label": "Timezone Offset (UTC)",
+        "options": [
+          {
+            "value": "-12:00",
+            "label": "UTC-12"
+          },
+          {
+            "value": "-11:00",
+            "label": "UTC-11"
+          },
+          {
+            "value": "-10:00",
+            "label": "UTC-10"
+          },
+          {
+            "value": "-09:30",
+            "label": "UTC-9:30"
+          },
+          {
+            "value": "-09:00",
+            "label": "UTC-9"
+          },
+          {
+            "value": "-08:00",
+            "label": "UTC-8 (Pacific - US & Canada)"
+          },
+          {
+            "value": "-07:00",
+            "label": "UTC-7 (Mountain - US & Canada)"
+          },
+          {
+            "value": "-06:00",
+            "label": "UTC-6 (Central - US & Canada)"
+          },
+          {
+            "value": "-05:00",
+            "label": "UTC-5 (Eastern - US & Canada)"
+          },
+          {
+            "value": "-04:30",
+            "label": "UTC-4:30"
+          },
+          {
+            "value": "-04:00",
+            "label": "UTC-4:00"
+          },
+          {
+            "value": "-03:30",
+            "label": "UTC-3:30"
+          },
+          {
+            "value": "-03:00",
+            "label": "UTC-3"
+          },
+          {
+            "value": "-02:00",
+            "label": "UTC-2"
+          },
+          {
+            "value": "-01:00",
+            "label": "UTC-1"
+          },
+          {
+            "value": "+00:00",
+            "label": "UTC+-0"
+          },
+          {
+            "value": "+01:00",
+            "label": "UTC+1"
+          },
+          {
+            "value": "+02:00",
+            "label": "UTC+2"
+          },
+          {
+            "value": "+03:00",
+            "label": "UTC+3"
+          },
+          {
+            "value": "+03:30",
+            "label": "UTC+3:30"
+          },
+          {
+            "value": "+04:00",
+            "label": "UTC+4"
+          },
+          {
+            "value": "+04:30",
+            "label": "UTC+4:30"
+          },
+          {
+            "value": "+05:00",
+            "label": "UTC+5"
+          },
+          {
+            "value": "+05:30",
+            "label": "UTC+5:30"
+          },
+          {
+            "value": "+05:45",
+            "label": "UTC+5:45"
+          },
+          {
+            "value": "+06:00",
+            "label": "UTC+6"
+          },
+          {
+            "value": "+06:30",
+            "label": "UTC+6:30"
+          },
+          {
+            "value": "+07:00",
+            "label": "UTC+7"
+          },
+          {
+            "value": "+08:00",
+            "label": "UTC+8"
+          },
+          {
+            "value": "+08:30",
+            "label": "UTC+8:30"
+          },
+          {
+            "value": "+08:45",
+            "label": "UTC+7"
+          },
+          {
+            "value": "+09:00",
+            "label": "UTC+9"
+          },
+          {
+            "value": "+09:30",
+            "label": "UTC+9:30"
+          },
+          {
+            "value": "+10:00",
+            "label": "UTC+10"
+          },
+          {
+            "value": "+10:30",
+            "label": "UTC+10:30"
+          },
+          {
+            "value": "+11:00",
+            "label": "UTC+11"
+          },
+          {
+            "value": "+12:00",
+            "label": "UTC+12"
+          },
+          {
+            "value": "+12:45",
+            "label": "UTC+12:45"
+          },
+          {
+            "value": "+13:00",
+            "label": "UTC+13"
+          },
+          {
+            "value": "+14:00",
+            "label": "UTC+14"
+          }
+        ],
+        "default": "-08:00"
+      },
+      {
+        "type": "header",
+        "content": "Days you ship:"
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_calculator_ship_on_sunday",
+        "label": "Sundays",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_calculator_ship_on_monday",
+        "label": "Mondays",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_calculator_ship_on_tuesday",
+        "label": "Tuesdays",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_calculator_ship_on_wednesday",
+        "label": "Wednesdays",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_calculator_ship_on_thursday",
+        "label": "Thursdays",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_calculator_ship_on_friday",
+        "label": "Fridays",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_calculator_ship_on_saturday",
+        "label": "Saturdays",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_calculator_holidays",
+        "label": "Holidays and other days you don't ship",
+        "info": "One per line in this format: YYYY-MM-DD"
+      },
+      {
+        "type": "header",
+        "content": "User Facing Messages"
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_calculator_unsupported_location",
+        "label": "Message for user if your shop doesn't ship to their location.",
+        "default": "We do not ship to your location.",
+        "info": "Available variables: [city], [state code], [state name], [country code], [country name], [postal code]"
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_calculator_no_shipping_rates_found",
+        "label": "Message if there were no shipping rates found for the user's location \/ cart items",
+        "default": "Sorry, either we do not ship to your location or there is not a rate for the items in your cart.",
+        "info": "E.g., 'Sorry, either we do not ship to your location or there is not a rate for the items in your cart."
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_try_again",
+        "label": "Message to prompt user to use manual input form when geolocation fails (or they want to manually try a different address)",
+        "default": "Try a different address?",
+        "info": "E.g., 'Try a different address?'"
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_calculator_order_cutoff_message",
+        "label": "Message to user indicating the date they must order by to get it in the current time window.",
+        "default": "Get it by [date] if ordered in the next [cutoff].",
+        "info": "Available variables: [date], [cutoff].  Date uses the 'Date format for arrive by date' setting above. E.g., 'Get it by [date] if ordered in the next [cutoff]' would become 'Get it by Thursday, Oct. 4th if ordered in the next 3 hours'"
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_calculator_results_header",
+        "label": "Results header",
+        "default": "Shipping rates for [state name]",
+        "info": "Available variables: [city], [state code], [state name], [country code], [country name], [postal code], [lowest rate].  E.g., 'Shipping rates for [state name]'"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_wrong_location_text",
+        "label": "Text to ask if the user wants to ship somewhere other than what the geolocation suggests.",
+        "default": "Not shipping to [city]?",
+        "info": "Available variables: [city], [state code], [state name], [country code], [country name], [postal code]. E.g., 'Not shipping to [city]?'"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_free_shipping_text",
+        "label": "Text to display if shipping is free",
+        "default": "FREE"
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_calculator_additional_results_message_text",
+        "label": "Additional message to display with results",
+        "default": "<em>You will be able to choose your preferred deliver option during the checkout process<\/em>"
+      },
+      {
+        "type": "header",
+        "content": "Style and CSS Customization"
+      },
+      {
+        "type": "paragraph",
+        "content": "All of the options below are completely optional.  It is only recommended to use them if you are familiar with CSS.  In addition to adding classes below, you may also directly override the CSS that comes with the shipping calculator in your own stylesheet."
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_css_select_classes",
+        "label": "Additional CSS classes to put on select (dropdown) inputs",
+        "info": "Separate each class by a space"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_css_text_classes",
+        "label": "Additional CSS classes to put on text inputs",
+        "info": "Separate each class by a space"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_css_button_classes",
+        "label": "Additional CSS classes to put on button elements",
+        "info": "Separate each class by a space"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_css_label_classes",
+        "label": "Additional CSS classes to put on label elements (labels that accompany radio inputs)",
+        "info": "Separate each class by a space"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_css_list_classes",
+        "label": "Additional CSS classes to put on list (ul, ol) elements",
+        "info": "Separate each class by a space"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_css_list_item_classes",
+        "label": "Additional CSS classes to put on list item (li) elements",
+        "info": "Separate each class by a space"
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_css_container_classes",
+        "label": "Additional CSS classes to put on overall shipping calculator container",
+        "info": "Separate each class by a space"
+      },
+      {
+        "type": "color",
+        "id": "shipping_calculator_border_color",
+        "label": "Border color",
+        "default": "#E4E4E4"
       }
     ]
   }

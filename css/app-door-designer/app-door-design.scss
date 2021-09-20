@@ -1,0 +1,80 @@
+/* --------------------------------------------------
+Door Design App
+-------------------------------------------------- */
+
+@media (orientation: landscape) {
+  #doorApp {
+    width: 30vw;
+    height: calc(20vw * 1.25);
+    margin:0 auto;
+    border-color:#000;
+    padding:10px 10px 0 10px;
+  }
+}
+
+@media (orientation: portrait) {
+  #doorApp {
+    width: 80vw;
+    height: calc(80vw * 1.25);
+    margin:0 auto;
+    border-color:#000;
+    padding:10px 10px 0 10px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.w-60 {
+  width: 60% !important;
+}
+
+  .jamb {background: #fff;}
+  /* door container */
+  .doors-container {width:100%;height:99%;}
+  .top-track {height:7%;width:100%;border-bottom:1px solid #555;}
+  .doors {width:100%;border-bottom:1px solid #555;border-top:1px solid #858585;height: 92%;}
+  .door {height:100%;}
+  .buffer {width:0.5%;height:100%;background:#ebebeb;}
+  .frame {width:3.5%;height:100%}
+  .insert-wrapper {height:100%;}
+  .insertSelector {display:block; width:100%;height:96%;}
+  .insertSelector:hover,
+  .insertSelector:focus {border:1px solid #2a6496;}
+  .insert {width:100%;height:100%;}
+  .insert-selector {margin:5px 5px 0 0;}
+  .bottom-frame {border: 1px solid #ccc;width:100%;height:4%;}
+  .frame-border {border:1px solid #ccc;}
+  .bottom-track {height:1%;width:100%;border-top:1px solid #858585;}
+  .botjamb {height:1%;width:100%;}
+
+/* individual door styles */
+
+  /* door 1 */
+  .door1 {}
+
+  /* door 2 */
+  .door2{}
+
+  .frame-colour-sample {width:100%;height:30px;}
+
+/* insert options */
+
+  .insert-option {width:100%;height:100px;}
+
+  .colonial-mdf a.thumbnail,
+  .vinyl a.thumbnail,
+  .painted-glass a.thumbnail {margin-bottom: 0;}
+
+  .colonial-mdf p,
+  .vinyl p,
+  .painted-glass p {font-style: italic;font-size: small;}
+
+#doorAppForm .form-control-feedback {
+  line-height: 2.3;
+}

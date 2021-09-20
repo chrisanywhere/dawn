@@ -1,0 +1,119 @@
+{% capture comments_icons %}
+    {% if article.comments_count == 1 %}
+        <i class="icon icon-comment"></i>
+    {% elsif article.comments_count > 1 %}
+        <i class="icon icon-comments"></i>
+    {% endif %}
+{% endcapture %}
+
+<h3>{{ comments_icons | strip }} {{ article.comments_count }} {{- article.comments_count | pluralize: 'comment', 'comments' -}}</h3>
+
+{% paginate article.comments by 5 %}
+
+    <div id="comments">
+        {% if comment and comment.status and paginate.current_page == 1 %}
+            <div class="alert alert-success">
+            {% if blog.moderated? and comment.status != 'published' %}
+                Your comment was posted successfully. We will publish it shortly, as our blog is moderated.
+            {% else %}
+                Your comment was posted successfully! Thank you!
+            {% endif %}
+            </div>
+        {% endif %}
+
+        {% if number_of_comments > 0 %}
+                {% comment %}
+                    Display comment from URL parameters if it is waiting moderation
+                {% endcomment %}
+                {% if comment and comment.status != 'published' %}
+                    <blockquote id="{{ comment.id }}">
+                        <p class="rte">
+                            {{ comment.content }}
+                        </p>
+                        <footer>Posted by {{ comment.author }} on {{ comment.created_at | date: "%B %d, %Y" }}</footer>
+                    </blockquote>
+                {% endif %}
+
+                {% for comment in article.comments %}
+                    <blockquote id="{{ comment.id }}">
+                        <p class="rte">
+                            {{ comment.content }}
+                        </p>
+                        <footer>Posted by {{ comment.author }} on {{ comment.created_at | date: "%B %d, %Y" }}</footer>
+                    </blockquote>
+
+                {% endfor %}
+
+                <hr>
+
+            {% if paginate.pages > 1 %}
+                {% include 'pagination' %}
+            {% endif %}
+        {% endif %}
+    </div>
+
+{% endpaginate %}
+
+{% form 'new_comment', article %}
+    
+    <h3>Leave a comment</h3>
+
+    {% if form.errors %}
+        <div class="alert alert-danger" role:"alert">
+            <p><i class="icon icon-exclamation-circle"></i> Sorry, you appear to have missed something. Please see below:</p>
+            {{ form.errors | default_errors }}
+        </div>
+    {% endif %}
+
+    <div class="form-group {% if form.errors contains 'author' %}has-error{% endif %}">
+        <label for="CommentAuthor" class="label-hidden">
+            Name
+        </label>
+        <input type="text"
+                name="comment[author]"
+                id="CommentAuthor"
+                class="form-control"
+                placeholder="Name"
+                value="{{ form.author }}"
+                autocapitalize="words">
+    </div>
+
+    <div class="form-group {% if form.errors contains 'email' %}has-error{% endif %} ">
+        <label for="CommentEmail" class="label-hidden">
+            Email
+        </label>
+        <input type="email"
+                name="comment[email]"
+                id="CommentEmail"
+                class="form-control"
+                placeholder="Email"
+                value="{{ form.email }}"
+                spellcheck="false"
+                autocomplete="off"
+                autocapitalize="off">
+    </div>
+
+    <div class="form-group {% if form.errors contains 'body' %}has-error{% endif %} ">
+        <label for="CommentBody" class="label-hidden">
+            Comment
+        </label>
+        <textarea
+            name="comment[body]"
+            id="CommentBody"
+            class="form-control"
+            placeholder="Comment">
+            {{ form.body }}
+        </textarea>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Post comment">
+    </div>
+
+    {% if blog.moderated? %}
+        <div class="alert alert-info" role="alert">
+            <i class="icon icon-info-circle"></i>
+            Please note, comments must be approved before they are published.
+        </div>
+    {% endif %}
+{% endform %}

@@ -1,0 +1,5 @@
+<ul class="list-unstyled list-inline">
+	{% for link in linklists.products.links %}
+	   <li><a class="btn btn-primary btn-lg" href="{{ link.url }}">{{ link.title }} &raquo;</a></li>
+	{% endfor %}
+</ul>

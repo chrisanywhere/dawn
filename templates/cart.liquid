@@ -1,0 +1,116 @@
+<div class="container">
+  <h1 class="page-header">{{ page_title }}</h1>
+
+  {% if cart.item_count == 0 %}
+    <p class="lead">Your cart is empty.</p>
+    <hr>
+    <p class="lead">View product features &amp; benefits or visit the online shop to find prices and to place an order:</p>
+    {% include 'global-cta' %}
+  {% else %}
+  <script type="text/javascript">
+    function remove_item(id) {
+      document.getElementById('updates_'+id).value = 0;
+      document.getElementById('cart').submit();
+    }
+  </script>
+    <form action="/cart" method="post" id="cart">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="hidden-xs">&nbsp;</th>
+            <th>Item</th>
+            <th class="money hidden-xs">Price</th>
+            <th class="text-center">Qty</th>
+            <th class="money">Line Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart.items %}
+          <tr>
+            <td class="span2 hidden-xs"><img src="{{ item.product.featured_image | product_img_url: 'small' }}" class="thumbnail"></td>
+            <td>
+              <strong>{{ item.product.title | link_to: item.product.url }}</strong>
+              <small class="muted">{{ item.title | remove: item.product.title | remove: ' - ' }}</small>
+              <ul class="hidden-xs">
+              {% for property in item.properties %}
+                <li>
+                {% unless property.last == blank %}
+                  {{ property.first }}:
+                  {% if property.last contains '/uploads/' %}
+                  <a class="lightbox" href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
+                  {% else %}
+                  {{ property.last }}
+                  {% endif %}
+                {% endunless %}
+                </li>
+              {% endfor %}
+              </ul>
+            </td>
+            <td class="money hidden-xs"><span class='money'>{{ item.price | money | replace: ' ','&nbsp' }}</span></td>
+            <td class="text-center">
+              <div class="row">
+                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-2 col-xs-5 col-xs-offset-2">
+                  <input type="text" class="form-control" name="updates[{{ item.variant.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();">
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-4">
+                  <a class="muted" href="#" onclick="remove_item({{ item.variant.id }}); return false;"><span class="mt10 icon icon-times icon-dark icon-med"></span></a>
+                </div>
+              </div>
+            </td>
+            <td class="money">
+              <span class='money'>{{ item.line_price | money | replace: ' ','&nbsp' }}</span>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+      <div class="form-actions text-right">
+        <h3><small>Sub Total:</small> <span class='money' data-cart-total>{{ cart.total_price | money | replace: ' ','&nbsp' }}</span> <small>incl GST</small></h3>
+
+        <hr>
+        
+        {% include 'cart-shipping-calculator' %}
+
+        <hr>
+        <p>
+          <label for="agreeterms">
+            <input type="hidden" name="attributes[agree-delivery-terms]" value="">
+            <input id="agreeterms" type="checkbox" name="attributes[agree-delivery-terms]" value="yes" {% if cart.attributes.agree-terms-and-conditions %} checked="checked"{% endif %} class="required" required data-error="Please read and agree with the Delivery Terms and Conditions if you would like to proceed with your order."> I have read and agree with the <a href="#deliveryTermsModal" role="button" title="Delivery Terms and Conditions" data-toggle="modal">Delivery Terms and Conditions</a>
+          </label>
+        </p>
+        <hr>
+        <div class="pull-left">
+          <a class="btn btn-primary btn-info" href="/">&laquo; Continue Shopping</a>
+        </div>
+        <div class="btn-group">
+          <input type="submit" id="update-cart" name="update" value="Update Cart" class="btn btn-default">
+          <input type="submit" name="checkout" value="Checkout" class="btn btn-primary">
+        </div>
+      </div>
+    </form>
+
+    <hr>
+
+    {% include 'global-delivery-message' %}
+
+    <p>For detailed delivery information, please visit the <a href="/pages/delivery" title="Delivery Information">delivery information</a> page.</p>
+
+    <hr>
+
+    {% comment %}
+    {% include 'global-delivery-quote-msg' %}
+    {% endcomment %}
+
+    {% comment %}delivery terms info modal popup{% endcomment %}
+    {% assign modal-id = 'deliveryTermsModal' %}
+    {% assign modal-label = 'deliveryTermsLabel' %}
+    {% assign modal-title = 'Delivery Terms &amp; Conditions' %}
+    {% capture modal-body %}
+      {% include 'global-delivery-content' %}
+    {% endcapture %}
+    {% include 'helper-modal-popup' %}
+    {% comment %}end delivery terms popup{% endcomment %}
+
+  {% endif %}
+</div>

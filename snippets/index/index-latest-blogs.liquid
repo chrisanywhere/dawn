@@ -1,0 +1,26 @@
+{% for article in blogs['blog'].articles limit: 2 %}
+    <div class="media">
+        <div class="media-left">
+            {% if article.image %}
+                <a href="{{ article.url }}">
+                    <img src="{{ article.image.src | img_url: '64x64', crop: 'center' }}" alt="" class="media-object">
+                </a>
+            {% endif %}
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">
+                <a href="{{ article.url }}">{{ article.title }}</a>
+            </h4>
+            {% if article.excerpt.size > 0 %}
+              {{ article.excerpt }}
+            {% else %}
+              <p>
+                {{ article.content | strip_html | truncatewords: 40 }} <a href="{{ article.url }}">read more &raquo;</a>
+              </p>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+<p>
+    <a href="/blogs/blog">read all articles &raquo;</a>
+</p>

@@ -1,0 +1,88 @@
+{% assign hide_default_title = false %}
+{% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+  {% assign hide_default_title = true %}
+{% endif %}
+<div class="container">
+  <form action="/cart/add" method="post">
+    <div itemscope itemtype="//schema.org/Product">
+      <p><a href="/" title="Go back to product list" onclick="history.back(); return false">&laquo; Go back to product list</a></p>
+      <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+      <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
+      <div itemprop="manufacturer" itemscope itemtype="//schema.org/Organization">
+        <meta itemprop="name" content="{{ product.vendor }}" />
+      </div>
+      <div itemprop="brand" itemscope itemtype="//schema.org/Organization">
+        <meta itemprop="name" content="{{ product.vendor }}" />
+      </div>
+
+      {% if product.type == 'built-in-wardrobe' %}
+        {% include 'product-layout-wardrobes' %}
+      {% elsif product.type == 'sliding-wardrobe-doors' or product.type == 'sliding-wardrobe-doors-combo' %}
+        {% include 'product-layout-doors' %}
+      {% endif %}
+
+      <hr>
+
+      <h4><span class="icon icon-camera-retro"></span>&nbsp;Product Photos</h4>
+      <p>For product images, including photos sent in by existing customers, please visit our <a href="/products/photos" title="Product Photos">photo gallery</a>.</p>
+
+      <hr>
+
+      <h4><span class="icon icon-truck icon-small" id="delivery"></span>&nbsp;Delivery Information</h4>
+
+      {% include 'global-delivery-message' %}
+
+      <p>For detailed delivery information and pricing, please visit the <a href="/pages/delivery" title="Delivery Information">delivery information</a> page.</p>
+
+      <hr>
+
+      <p><a href="/" title="Go back to product list" onclick="history.back(); return false">&laquo; Go back to product list</a></p>
+
+    </div>
+
+  <script type="text/javascript">
+  // <![CDATA[  
+  var selectCallback = function(variant, selector) {
+    $('.single-option-selector').addClass('form-control');
+    $('#purchase').addClass('disabled').attr('disabled', 'disabled');      // set add-to-cart button to unavailable class and disable button
+    $('#purchase').removeClass('btn-primary');
+    $('#purchase').val('Unavailable');
+    // $('#purchase').hide();
+    $('#price-field').addClass('text-muted');      // set add-to-cart button to unavailable class and disable button
+    if (variant) {
+      $('#price-field').html(Shopify.formatMoney(variant.price, "<span class=\"money\">{{ shop.money_format | remove: '<span class="money">' | remove: '</span>' }}</span>"));
+      if (variant.compare_at_price > 0) {
+        $('#compare-at-price-field').html(Shopify.formatMoney(variant.compare_at_price, "<span class=\"money\">{{ shop.money_format | remove: '<span class="money">' | remove: '</span>' }}</span>"));  // update compare-at-price field
+        $('#sale-field').show(); // update sale-field message
+      } else {
+        $('#compare-at-price-field').text('');  // clear compare-at-price field
+        $('#sale-field').hide(); // clear sale-field message
+      }
+        
+      if (variant.available == true) {
+        // $('#purchase').show();
+        $('#purchase').addClass('btn-primary');
+        $('#purchase').removeClass('disabled').removeAttr('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
+        $('#purchase').val('Add to cart');
+        $('#price-field').removeClass('text-muted');      // set add-to-cart button to unavailable class and disable button
+      } else {
+        $('#purchase').val('Sold out');
+      }
+    } else {
+      $('#compare-at-price-field').text('');  // clear compare-at-price field
+      $('#price-field').text('Unavailable');  // update price field
+      $('#sale-field').hide(); // clear sale-field message
+    } 
+  };
+
+  // initialize multi-selector for product
+  $(function() {
+    new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: selectCallback });
+    {% if product.options.size == 1 %}
+    $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+    {% endif %}
+  });
+  // ]]>
+  </script>
+  </form>
+</div>

@@ -1,0 +1,79 @@
+<div class="container">
+	<header>
+		<div class="page-header">
+			{% include 'global-icons-share' %}
+			<h1>{{ page_title }}</h1>
+			<p class="lead"> {{ blog.articles_count }} reviews &amp; testimonials:</p>
+		</div>
+	</header>
+
+	<div class="row">
+		<div class="col-sm-9">
+			{% paginate blog.articles by 10 %}
+
+				{% include 'pagination' %}
+
+				{% for article in blog.articles %}
+				{% capture source %}
+					{% if article.tags contains 'email' %}
+						Email
+					{% elsif article.tags contains 'facebook' %}
+						<a href="https://www.facebook.com/Spacemaker.Wardrobes" title="View on Facebook">Facebook</a>
+					{% elsif article.tags contains 'google' %}
+						<a href="https://plus.google.com/+SpacemakerwardrobesAu" title="View on Google+">Google+</a>
+					{% elsif article.tags contains 'truelocal' %}
+						<a href="//www.truelocal.com.au/business/spacemaker-wardrobes/carrara" title="View on True Local">True Local</a>
+					{% endif %}
+				{% endcapture %}
+
+				{% capture star %}<i class="icon icon-star icon-red"></i>{% endcapture %}
+				{% capture staro %}<i class="icon icon-star-o text-muted"></i>{% endcapture %}
+				
+				{% assign custrating = article.metafields.review.rating %}
+				{% assign remainingstars = 5 | minus: custrating %}
+
+				{% capture starrating %}
+					<ul class="list-inline list-unstyled">
+						{% for i in (1..custrating) %}
+							<li>{{ star }}</li>
+						{% endfor %}
+						{% unless remainingstars == 0 %}
+							{% for i in (1..remainingstars) %}
+								<li>{{ staro }}</li>
+							{% endfor %}
+						{% endunless %}
+					</ul>
+				{% endcapture %}
+
+				{% capture rating %}
+					<p itemprop="reviewRating" itemscope itemtype="//schema.org/Rating"><meta itemprop="worstRating" content = "1"/><span itemprop="ratingValue">{{ custrating }}</span> / <span itemprop="bestRating">5</span></p>
+				{% endcapture %}
+
+				<article>
+					<blockquote itemprop="review" itemscope itemtype="//schema.org/Review">
+						<div class="row">
+							<div class="col-md-3">
+								{{ starrating }}
+							</div>
+							<div class="col-md-3">
+								{{ rating }}
+							</div>
+						</div>
+						<div itemprop="reviewBody">{{ article.content }}</div>
+						<small><cite title="Source Title" itemprop="author">{{ article.title }}</cite> on <meta itemprop="datePublished" content="{{ article.published_at | date: "%Y-%m-%d" }}">{{ article.published_at | date: "%d %B %Y" }}. Sent via {{ source }}. <span class="icon icon-map-marker"></span> {{ article.metafields.review.location }}</small>
+				  	</blockquote>
+				</article>
+				<hr>
+				{% endfor %}
+
+				{% include 'pagination' %}
+
+			{% endpaginate %}
+		</div>
+
+		<div class="col-sm-3 hidden-xs">
+			{% include 'global-icons-trust' %}
+		</div>
+
+	</div>
+</div>

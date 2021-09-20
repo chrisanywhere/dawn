@@ -1,0 +1,19 @@
+{% for link in linklists.youtube-videos.links limit: 2 %}
+    {% assign yturl = link.url | remove: 'https://youtu.be/' %}
+    {% assign ytsrc = yturl | prepend: 'https://www.youtube.com/embed/' %}
+
+    <div class="col-md-3">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="{{ ytsrc }}" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+{% endfor %}
+
+{% comment %}
+    <!-- optional popup button -->
+
+    <a class="hidden-xs" data-fancybox data-type="iframe" data-src="{{ ytsrc }}" href="javascript:;">
+        View Popup
+    </a>
+
+{% endcomment %}

@@ -1,0 +1,113 @@
+<div class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7">
+				<h1>DIY Wardrobes &amp; Sliding Wardrobe Doors</h1>
+				<p class="lead">We create DIY (do it yourself) wardrobes &amp; sliding wardrobe doors that we flat pack and deliver Australia Wide.</p>
+				<div class="cta">
+					<a class="btn btn-primary btn-lg" href="#getstarted">Find prices and order online <i class="icon icon-caret-down"></i></a>
+				</div>
+			</div>
+			<div class="col-md-5  mt20">
+				<img class="img-responsive img-thumbnail" src="{{ 'painted-glass-doors.jpg' | asset_img_url: 'master' }}" alt="Spacemaker Wardrobes - Painted Glass Doors" title="Spacemaker Wardrobes - Painted Glass Doors" />
+			</div>
+		</div>
+	</div>
+	<div id="getstarted"></div>
+</div>
+
+<div class="container">
+
+	{% include 'index-message' %}
+
+	{% comment %}
+		Door categories section
+	{% endcomment %}
+
+	<div class="col-md-12">
+		<p class="lead">Choose the <em>height</em> category which best matches your sliding wardrobe door opening:</p>
+
+		<p><span class="label label-info">Example:</span> If your wardrobe door opening is 2250mm high, you should choose the <em>2100mm to 2400mm high</em> category. <a class="pull-right" href="/pages/measuring-guide" title="Sliding Wardrobe Doors - Measure Guide"><span class="icon icon-ruler"></span>&nbsp;How to Measure Guide</a></p>
+	</div>
+
+	{% include 'collection-doors-heights' %}
+
+	<hr>
+
+	{% comment %}
+		Why choose us section
+	{% endcomment %}
+	<div class="row">
+		
+		<div class="col-md-12">
+			<h4>Why choose us?</h4>
+		</div>
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Custom Made for you</h3>
+				</div>
+				<div class="panel-body">Your sliding wardrobe doors will be custom made for you to meet your unique requirements. Follow the steps above to place your order online.</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Australia Wide Delivery</h3>
+				</div>
+				<div class="panel-body">Your order will be flat packed and delivered to your address. Alternatively you can pick it up yourself from our workshop - the choice is yours.</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">15 Year Warranty</h3>
+				</div>
+				<div class="panel-body">We are confident in the quality and durability of our products. All sliding wardrobe door components (including hardware) are guaranteed for 15 years (<a href="/pages/terms">read more</a>).</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<div class="col-md-12">
+			<h4><i class="icon icon-youtube-play"></i> Latest Videos</h4>
+		</div>
+		
+		{% include 'index-latest-videos' %}
+		
+		<div class="col-md-12">
+			<p class="text-right">
+				<i class="icon icon-youtube-play icon-red"></i> <a href="https://www.youtube.com/channel/UCwJQSdnZeYACiIU50-KimvA" target="_blank">see all videos on YouTube &raquo;</a>
+			</p>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		
+		<div class="col-md-8">
+			<h4><i class="icon icon-newspaper-o"></i> Latest Blog Posts</h4>
+			<div>
+				{% include 'index-latest-blogs' %}
+			</div>
+		</div>
+		
+		<div class="col-md-4">
+			<h4><i class="icon icon-picture-o"></i> Latest Photos</h4>
+			<div>
+				{% include 'index-latest-photos' %}
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<blockquote>
+		<p>We deliver flat pack wardrobes &amp; sliding wardrobe doors Australia wide. Areas that we service regularly are Brisbane, Gold Coast, Tweed Heads, Sunshine Coast, Ipswich, Beenleigh, and Coolangatta.</p>
+	</blockquote>
+
+</div>

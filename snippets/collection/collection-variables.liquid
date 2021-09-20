@@ -1,0 +1,7 @@
+{% assign wardrobes = 'wardrobes' %}
+{% capture wardrobeurl %}/collections/{{ wardrobes }}{% endcapture %}
+{% assign doors = 'sliding-wardrobe-doors' %}
+{% capture doorurl %}/collections/{{ doors }}{% endcapture %}
+{% assign heights = '2100h, 2400h, 2700h' | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+{% assign types = 'standard, straight, lcnr, rcnr' | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}
+{% assign widths = '1200w, 1500w, 1800w, 2100w, 2400w, 2700w, 3000w, 3300w, 3600w' | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}

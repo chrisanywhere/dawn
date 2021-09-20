@@ -1,0 +1,63 @@
+/* --------------------------------------------------
+Navbar
+-------------------------------------------------- */
+.header {margin:25px 0;}
+.cart{margin-top:5px;}
+.uppercased-spaced {
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+.space-title {font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.space-orange {color:#EF3D25;}
+.space-gray {color:#9d9d9d;}
+
+/* --------------------------------------------------
+Breadcrumb
+-------------------------------------------------- */
+.breadcrumb {
+  margin-top: 24px;
+}
+
+/* --------------------------------------------------
+Wardrobe Doors - product info page
+-------------------------------------------------- */
+.list-tooltips {margin-top:12px;margin-bottom:0; }
+
+/* --------------------------------------------------
+Wardrobe page
+-------------------------------------------------- */
+.wardrobe-types .thumbnail {padding-top:40px;padding-bottom:30px;}
+
+/* --------------------------------------------------
+Doors page
+-------------------------------------------------- */
+.door-heights {text-align: center;}
+.door-heights .thumbnail {padding-top: 10px;padding-bottom: 10px;}
+
+/* --------------------------------------------------
+Product display & product forms
+-------------------------------------------------- */
+.browse-btn {float:right;}
+.vertical-center-standard {margin-top: 40px;}
+.vertical-center-cnr {margin-top: 210px;}
+
+/* Call to action */
+.cta {margin-top:30px;}
+.btn-2 {margin-left:20px;}
+/* browse pages */
+.wardrobes3 .browse-btn {float:right;margin-top: 30px;}
+.doors3 .browse-prod-price {text-align: right;margin-top:12px;}
+/* product detail page */
+.prod-buy {margin-top:20px;text-align: right;}
+/* custom collapse button to tidy up collapses */
+.collapseBtn {padding-top:2px !important;padding-bottom:2px !important;}
+
+/* --------------------------------------------------
+Footer
+-------------------------------------------------- */
+.footer {
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f5f5f5;
+}

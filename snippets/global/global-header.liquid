@@ -1,0 +1,27 @@
+<div class="header hidden-xs">
+	<div class="row">
+		<div class="col-md-3 col-sm-5">
+			<a href="/" title="Spacemaker Wardrobes - Home"><img class="img-responsive" src="{{ 'spacemaker-wardrobes-logo.png' | asset_url }}"></a>
+		</div>
+		<div class="col-md-5 col-sm-4">
+			{% include 'global-icons-like' %}
+		</div>
+		<div class="col-md-4 hidden-sm cart">
+			<div class="btn-group pull-right">
+				<a class="btn btn-default" href="/cart">{{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} in cart</a>
+      			<a class="btn btn-primary" href="/cart" title="Check out"><span class="fa fa-shopping-cart"></span> Check out</a>
+			</div>
+		</div>
+		<div class="col-sm-3 visible-sm">
+			<div class="btn-group pull-right mt10">
+				{% if shop.customer_accounts_enabled %}
+				{% if customer %}
+				<a class="btn btn-default btn-sm" href="/account" title="My Account"><span class="fa fa-user"></span></a>
+				{% else %}
+				<a class="btn btn-default btn-sm" href="/account/login" title="Log in"><span class="fa fa-user"></span></a>
+				{% endif %}{% endif %}
+				<a class="btn btn-primary btn-sm" href="/cart" title="Check out"><span class="fa fa-shopping-cart"></span> Cart</a>
+			</div>
+		</div>
+	</div>
+</div>

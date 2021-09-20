@@ -1,0 +1,110 @@
+<div class="container">
+  {% paginate blog.articles by 5 %}
+
+    {%- assign blog_title = blog.title -%}
+
+    {% if current_tags %}
+      {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
+    {% endif %}
+
+    <header>
+      <div class="page-header">
+        {% include 'global-icons-share' %}
+        <h1>Spacemaker Wardrobes</h1>
+        <p class="lead">Blogging about storage ideas, industry news and latest technology</p>
+      </div>
+	  </header>
+
+    <div class="row">
+		  <div class="col-sm-9">
+
+        {% comment %}
+
+        Article Previews
+        ====================
+        {% endcomment %}
+
+        {% for article in blog.articles %}
+          <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+          {% include 'blog-author' %}
+
+          {% if article.image %}
+            <a href="{{ article.url }}">
+              <img src="{{ article.image.src | img_url: '400x400' }}" alt="" class="img-responsive center-block img-thumbnail">
+            </a>
+          {% endif %}
+
+          <div class="rte">
+            {% if article.excerpt.size > 0 %}
+              {{ article.excerpt }}
+            {% else %}
+              <p>
+                {{ article.content | strip_html | truncatewords: 100 }}
+              </p>
+            {% endif %}
+          </div>
+
+          <div class="row">
+            <div class="col-md-10">
+              {% if blog.comments_enabled? or article.tags.size > 0 %}
+                {% include 'blog-tags', class: 'list-unstyled list-inline' %}
+
+                {% if blog.comments_enabled? %}
+                  {% capture comments_icons %}
+                    {% if article.comments_count == 1 %}
+                      <i class="icon icon-comment"></i>
+                    {% elsif article.comments_count > 1 %}
+                      <i class="icon icon-comments"></i>
+                    {% endif %}
+                  {% endcapture %}
+                  <p>
+                    <a href="{{ article.url }}#comments">
+                      {{ comments_icons | strip }} {{ article.comments_count }} {{- article.comments_count | pluralize: 'comment', 'comments' -}}
+                    </a>
+                  </p>
+                {% endif %}
+              {% endif %}
+            </div>
+
+            <div class="col-md-2">
+              <p class="text-right">
+                <a href="{{ article.url }}">read more &raquo;</a>
+              </p>
+            </div>
+          </div>
+
+          {% unless forloop.last %}<hr>{% endunless %}
+        {% endfor %}
+      </div>
+
+      <div class="hidden-xs col-sm-3">
+
+        {% if blog.all_tags.size > 0 %}
+          <h4><small>Blog Categories</small></h4>
+
+          <ul>
+            {% for tag in blog.all_tags %}
+
+              {% if current_tags contains tag %}
+                <li>{{ tag }}</li>
+              {% else %}
+                <li>{{ tag | link_to_tag: tag }}</li>
+              {% endif %}
+
+            {% endfor %}
+          </ul>
+
+          <hr>
+        {% endif %}
+
+        {% include 'global-icons-trust' %}
+      </div>
+    
+    </div>
+
+    {% if paginate.pages > 1 %}
+      {% include 'pagination' %}
+    {% endif %}
+
+  {% endpaginate %}
+</div>
